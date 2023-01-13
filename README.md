@@ -1,0 +1,3 @@
+# aiaontology
+This ontology forms part of the work of the Hyperledger Climate Action SIG Standards WG. 
+Read more about out work [here](https://wiki.hyperledger.org/display/CASIG/Standards+WG)
