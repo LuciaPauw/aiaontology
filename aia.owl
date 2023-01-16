@@ -4,9 +4,27 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @base <http://www.semanticweb.org/lucia/ontologies/2023/0/aia> .
 
 <http://www.semanticweb.org/lucia/ontologies/2023/0/aia> rdf:type owl:Ontology .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2006/time#Duration
+time:Duration rdf:type rdfs:Datatype .
+
+
+###  http://www.wikidata.org/wiki/Q215627
+<http://www.wikidata.org/wiki/Q215627> rdf:type rdfs:Datatype ;
+                                       rdfs:label "wikidata:person"@en .
+
 
 #################################################################
 #    Object Properties
@@ -19,6 +37,13 @@
           rdfs:range :Claim .
 
 
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#defines
+:defines rdf:type owl:ObjectProperty ;
+         owl:inverseOf :isDefinedBy ;
+         rdfs:domain :Parameter ;
+         rdfs:range :Environment .
+
+
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#forParameter
 :forParameter rdf:type owl:ObjectProperty ;
               rdfs:domain :ExpressionSymbol ;
@@ -27,6 +52,7 @@
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#guides
 :guides rdf:type owl:ObjectProperty ;
+        owl:inverseOf :isGuidedBy ;
         rdfs:domain :Procedure ;
         rdfs:range :Activity .
 
@@ -48,6 +74,13 @@
 :hasFormula rdf:type owl:ObjectProperty ;
             rdfs:domain :Calculation ;
             rdfs:range :Formula .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasImpactClaim
+:hasImpactClaim rdf:type owl:ObjectProperty ;
+                owl:inverseOf :hasImpactPathwayPos ;
+                rdfs:domain :ImpactPathwayPosition ;
+                rdfs:range :ImpactClaim .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasImpactPathwayPos
@@ -88,12 +121,6 @@
          rdfs:range :Environment .
 
 
-###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isAgentType
-:isAgentType rdf:type owl:ObjectProperty ;
-             rdfs:domain :Agent ;
-             rdfs:comment "FIX: range is die union van dbo:Person en dbo:Legal_person"@en .
-
-
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isContainedIn
 :isContainedIn rdf:type owl:ObjectProperty ;
                rdfs:domain :Claim ;
@@ -104,6 +131,12 @@
 :isDefinedBy rdf:type owl:ObjectProperty ;
              rdfs:domain :Environment ;
              rdfs:range :Parameter .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isGuidedBy
+:isGuidedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Activity ;
+            rdfs:range :Procedure .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isImpactedBy
@@ -144,6 +177,7 @@
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isPerformedWith
 :isPerformedWith rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :usedToPerform ;
                  rdfs:domain :Activity ;
                  rdfs:range :Instrument .
 
@@ -199,6 +233,12 @@
 :owns rdf:type owl:ObjectProperty ;
       rdfs:domain :Owner ;
       rdfs:range owl:Thing .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#usedToPerform
+:usedToPerform rdf:type owl:ObjectProperty ;
+               rdfs:domain :Instrument ;
+               rdfs:range :Activity .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#usesSymbols
@@ -261,8 +301,7 @@
 :hasAgentIDs rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
              rdfs:domain :Agent ;
-             rdfs:range xsd:string ;
-             rdfs:comment "In die protobuffs is die range van hierdie property repeated strings, maar niks keer jou om in die data any number of triples met dieselfde subject en predicate te he nie. Elke triple het dus net 'n string as object" .
+             rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasClaimantID
@@ -302,11 +341,8 @@
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasDefinition
 :hasDefinition rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
-               rdfs:domain [ rdf:type owl:Class ;
-                             owl:unionOf ( :Indicator
-                                           :Parameter
-                                         )
-                           ] ;
+               rdfs:domain :Indicator ,
+                           :Parameter ;
                rdfs:range xsd:string .
 
 
@@ -317,11 +353,20 @@
                 rdfs:range xsd:string .
 
 
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasDuration
+:hasDuration rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Activity ,
+                         :Environment ;
+             rdfs:range time:Duration .
+
+
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasEndDateTime
 :hasEndDateTime rdf:type owl:DatatypeProperty ;
                 rdfs:domain :AccountingPeriod ,
-                            :Activity ;
-                rdfs:range xsd:dateTime .
+                            :Activity ,
+                            :Event ;
+                rdfs:range xsd:dateTime ;
+                rdfs:comment "Format: YYYY-MM-DDThh:mm:ss"@en .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasEnvironmentID
@@ -485,8 +530,10 @@ FIX: domain is bv. IPCC activities soos gedef in die een of ander ontology"""@en
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasStartDateTime
 :hasStartDateTime rdf:type owl:DatatypeProperty ;
                   rdfs:domain :AccountingPeriod ,
-                              :Activity ;
-                  rdfs:range xsd:dateTime .
+                              :Activity ,
+                              :Event ;
+                  rdfs:range xsd:dateTime ;
+                  rdfs:comment "Format: YYYY-MM-DDThh:mm:ss"@en .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasStateDiffID
@@ -507,7 +554,7 @@ FIX: domain is bv. IPCC activities soos gedef in die een of ander ontology"""@en
               rdfs:domain :IndicVal ,
                           :ParVal ;
               rdfs:range xsd:dateTime ;
-              rdfs:comment "(maak seker die range is reg - in eerste weergawe is ons eie datetime ding gebruik; not ideal)" .
+              rdfs:comment "Format: YYYY-MM-DDThh:mm:ss"@en .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasUnitOfMeasure
@@ -542,14 +589,15 @@ FIX: domain is bv. IPCC activities soos gedef in die een of ander ontology"""@en
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#wasCalibratedOn
 :wasCalibratedOn rdf:type owl:DatatypeProperty ;
                  rdfs:domain :MeasurementInstrument ;
-                 rdfs:range xsd:dateTime .
+                 rdfs:range xsd:dateTime ;
+                 rdfs:comment "Format: YYYY-MM-DDThh:mm:ss"@en .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#wasManufacturedOn
 :wasManufacturedOn rdf:type owl:DatatypeProperty ;
                    rdfs:domain :Instrument ;
-                   rdfs:range xsd:dateTime ;
-                   rdfs:comment "FIX: hierdie range hoef net 'n date te wees, nie 'n dateTime nie. vir wouter"@en .
+                   rdfs:range xsd:date ;
+                   rdfs:comment "Format: eg. 2022-01-16"@en .
 
 
 #################################################################
@@ -563,6 +611,7 @@ FIX: domain is bv. IPCC activities soos gedef in die een of ander ontology"""@en
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity
 :Activity rdf:type owl:Class ;
+          owl:disjointWith :Event ;
           rdfs:comment "An act willfully engaged in or performed by an agent."@en ;
           rdfs:label "Activity"@en .
 
@@ -682,6 +731,11 @@ FIX: moontlike check hiervoor?"""@en ;
             owl:incompatibleWith "Instrument"@en .
 
 
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#LegalPerson
+:LegalPerson rdf:type owl:Class ;
+             rdfs:subClassOf :Agent .
+
+
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Location
 :Location rdf:type owl:Class ;
           rdfs:comment "FIX: gebruik bestaande"@en .
@@ -711,6 +765,11 @@ FIX: moontlike check hiervoor?"""@en ;
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MethodologyType
 :MethodologyType rdf:type owl:Class ;
                  rdfs:comment "FIX: \"Consider extracting \"procedure\" and \"source\" into classes of their own.\""@en .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#NaturalPerson
+:NaturalPerson rdf:type owl:Class ;
+               rdfs:subClassOf :Agent .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Operator
