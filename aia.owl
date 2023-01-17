@@ -433,8 +433,7 @@ time:Duration rdf:type rdfs:Datatype .
                             :Activity ,
                             :Event ;
                 rdfs:range xsd:dateTime ;
-                rdfs:comment "Format: YYYY-MM-DDThh:mm:ss"@en ;
-                owl:equivalentProperty <http://www.w3.org/ns/prov#endedAtTime> .
+                rdfs:comment "Format: YYYY-MM-DDThh:mm:ss"@en .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasExpression
@@ -554,7 +553,7 @@ FIX: domain is bv. IPCC activities soos gedef in die een of ander ontology"""@en
                               :Event ;
                   rdfs:range xsd:dateTime ;
                   rdfs:comment "Format: YYYY-MM-DDThh:mm:ss"@en ;
-                  owl:equivalentProperty <http://www.w3.org/ns/prov#startedAtTime  > .
+                  owl:equivalentProperty <http://www.w3.org/ns/prov#startedAtTime> .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasTimestamp
@@ -599,12 +598,6 @@ FIX: domain is bv. IPCC activities soos gedef in die een of ander ontology"""@en
                    rdfs:comment "Format: eg. 2022-01-16"@en .
 
 
-###  http://www.w3.org/ns/prov#generatedAtTime
-<http://www.w3.org/ns/prov#generatedAtTime> rdf:type owl:DatatypeProperty ;
-                                            rdfs:domain :Output ;
-                                            rdfs:range xsd:dateTime .
-
-
 #################################################################
 #    Classes
 #################################################################
@@ -626,11 +619,6 @@ An act willfully engaged in or performed by an agent."""@en ;
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ActivityClass
 :ActivityClass rdf:type owl:Class ;
                rdfs:comment "FIX: range is die adres van ‘n eksterne ontologie (kyk na IPCC se categories en maak desnoods ‘n wikipedia page daarvoor op wikipedia sodat dit op dbpedia kan kom)"@en .
-
-
-###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Actuator
-:Actuator rdf:type owl:Class ;
-          rdfs:subClassOf :Instrument .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Agent
@@ -678,8 +666,7 @@ Fix die hele report claim affere"""@af .
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Control
 :Control rdf:type owl:Class ;
-         rdfs:comment "\"[T]he restriction of an activity, tendency, or phenomenon.\" (OED, Google)"@en ,
-                      "EIE: Methodology is a control."@af .
+         rdfs:comment "\"[T]he restriction of an activity, tendency, or phenomenon.\" (OED, Google)"@en .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Developer
@@ -775,7 +762,7 @@ An instrument is used by an agent to perform an activity."""@en ;
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Location
 :Location rdf:type owl:Class ;
-          rdfs:comment "An entity of type Location can be a Point, Line, Polygon, or Volume. A point has a x and y (and optional z) coordinate. If no z coordinate is specified, sea level is assumed. A line comprises exactly two points. A path is a collection of line segments. A polygon is the area enclosed by three or more points. A volume is the area enclosed by four or more polygons where each edge is shared by exactly two polygons. Length can be derived from a given Line, area from a given Polygon, and volume from a given Volume."@en ,
+          rdfs:comment "An entity of type Location can be a Point, Line, Polygon, or Volume. A point has a x and y (and optional z) coordinate. If no z coordinate is specified, sea level is assumed. A line comprises exactly two points. A polygon is the area enclosed by three or more points. A volume is the area enclosed by four or more polygons where each edge is shared by exactly two polygons. Length can be derived from a given Line, area from a given Polygon, and volume from a given Volume."@en ,
                        "FIX: gebruik bestaande"@af .
 
 
@@ -808,9 +795,7 @@ An instrument is used by an agent to perform an activity."""@en ;
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#NaturalPerson
 :NaturalPerson rdf:type owl:Class ;
-               owl:equivalentClass <http://www.w3.org/ns/prov#Person> ;
-               rdfs:subClassOf :LegalPerson ;
-               owl:disjointWith :Organisation .
+               rdfs:subClassOf :Agent .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Objective
@@ -823,12 +808,6 @@ An instrument is used by an agent to perform an activity."""@en ;
 :Operator rdf:type owl:Class ;
           rdfs:subClassOf :Role ;
           rdfs:comment "\"[A] person who operates equipment or a machine.\" (OED, Google)"@en .
-
-
-###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Organisation
-:Organisation rdf:type owl:Class ;
-              owl:equivalentClass <http://www.w3.org/ns/prov#Organization> ;
-              rdfs:subClassOf :LegalPerson .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Output
@@ -850,11 +829,6 @@ An instrument is used by an agent to perform an activity."""@en ;
 :Parameter rdf:type owl:Class ;
            rdfs:comment "A numerical or other measurable quality or feature forming one of a set that defines a thing or sets the conditions of its existence or operation."@en ;
            rdfs:label "Parameter"@en .
-
-
-###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Path
-:Path rdf:type owl:Class ;
-      rdfs:subClassOf :Location .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Point
@@ -887,8 +861,7 @@ An instrument is used by an agent to perform an activity."""@en ;
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Project
 :Project rdf:type owl:Class ;
-         rdfs:comment "\"[A]n individual or collaborative enterprise that is carefully planned to achieve a particular aim.\" (OED, Google)"@en ,
-                      "FIX"@af .
+         rdfs:comment "\"[A]n individual or collaborative enterprise that is carefully planned to achieve a particular aim.\" (OED, Google)"@en .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Report
@@ -915,11 +888,6 @@ An instrument is used by an agent to perform an activity."""@en ;
       owl:equivalentClass <http://www.w3.org/ns/prov#Role> ;
       rdfs:comment """\"[T]he function assumed or part played by a person or thing in a particular situation.\" (OED, Google)
 \"A role is the function of an entity or agent with respect to an activity, in the context of a usage, generation, invalidation, association, start, and end.\" (http://www.w3.org/ns/prov#Role)"""@en .
-
-
-###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Sensor
-:Sensor rdf:type owl:Class ;
-        rdfs:subClassOf :Instrument .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#SourceMethodology
@@ -977,14 +945,6 @@ owl:Thing rdf:type owl:Class ;
 
 ###  http://www.w3.org/ns/prov#InstantaneousEvent
 <http://www.w3.org/ns/prov#InstantaneousEvent> rdf:type owl:Class .
-
-
-###  http://www.w3.org/ns/prov#Organization
-<http://www.w3.org/ns/prov#Organization> rdf:type owl:Class .
-
-
-###  http://www.w3.org/ns/prov#Person
-<http://www.w3.org/ns/prov#Person> rdf:type owl:Class .
 
 
 ###  http://www.w3.org/ns/prov#Plan
