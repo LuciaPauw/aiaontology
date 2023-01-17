@@ -1,0 +1,6 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dbo:<http://dbpedia.org/ontology/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+:wouter rdf:type dbo:Person .
+dbo:Person owl:disjointWith dbo:School .
+:wouter a dbr:School .
