@@ -552,8 +552,7 @@ FIX: domain is bv. IPCC activities soos gedef in die een of ander ontology"""@en
                               :Activity ,
                               :Event ;
                   rdfs:range xsd:dateTime ;
-                  rdfs:comment "Format: YYYY-MM-DDThh:mm:ss"@en ;
-                  owl:equivalentProperty <http://www.w3.org/ns/prov#startedAtTime> .
+                  rdfs:comment "Format: YYYY-MM-DDThh:mm:ss"@en .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasTimestamp
@@ -575,13 +574,32 @@ FIX: domain is bv. IPCC activities soos gedef in die een of ander ontology"""@en
 :hasValue rdf:type owl:DatatypeProperty ;
           rdfs:domain :IndicVal ,
                       :ParVal ;
-          rdfs:range xsd:byte .
+          rdfs:range rdf:XMLLiteral .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isSymbol
 :isSymbol rdf:type owl:DatatypeProperty ;
           rdfs:domain :ExpressionSymbol ;
           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#locationHasX
+:locationHasX rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Location ;
+              rdfs:range rdfs:Literal .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#locationHasY
+:locationHasY rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Location ;
+              rdfs:range rdfs:Literal ;
+              rdfs:comment "EIE: fix range"@af .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#locationHasZ
+:locationHasZ rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Location ;
+              rdfs:range rdfs:Literal .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#wasCalibratedOn
@@ -609,7 +627,8 @@ FIX: domain is bv. IPCC activities soos gedef in die een of ander ontology"""@en
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity
 :Activity rdf:type owl:Class ;
-          owl:equivalentClass <http://www.w3.org/ns/prov#Activity> ;
+          owl:equivalentClass :Project ,
+                              <http://www.w3.org/ns/prov#Activity> ;
           owl:disjointWith :Event ;
           rdfs:comment """A thing that an agent does, which impacts an environment.
 An act willfully engaged in or performed by an agent."""@en ;
