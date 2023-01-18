@@ -1,0 +1,1437 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#"
+     xml:base="http://www.semanticweb.org/lucia/ontologies/2023/0/aia"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:time="http://www.w3.org/2006/time#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#equivalentClass -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#equivalentProperty -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#equivalentProperty"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#sameAs -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#sameAs"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/person -->
+
+    <rdfs:Datatype rdf:about="http://dbpedia.org/ontology/person"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Duration -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2006/time#Duration"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#comprises -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#comprises">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isPartOf"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Project"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#contains -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#contains">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isContainedIn"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Report"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Claim"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#defines -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#defines">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isDefinedBy"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Environment"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#forParameter -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#forParameter">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ExpressionSymbol"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#guides -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#guides">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isGuidedBy"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Procedure"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasActivityClass -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasActivityClass">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ActivityClass"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasCalculation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasCalculation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#CalculationMethodology"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Indicator"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Calculation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasFormula -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasFormula">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Calculation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Formula"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasImpactClaim -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasImpactClaim">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasImpactPathwayPos"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactPathwayPosition"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactClaim"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasImpactPathwayPos -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasImpactPathwayPos">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactClaim"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactPathwayPosition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasLocation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasMethodologyType -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasMethodologyType">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Methodology"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MethodologyType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasReputation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasReputation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Agent"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Reputation"/>
+        <rdfs:comment xml:lang="af">EIE</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasSymbol -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasSymbol">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Variable"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ExpressionSymbol"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasVariableValue -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasVariableValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Calculation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Variable"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#impacts -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#impacts">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isImpactedBy"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Event"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Environment"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isContainedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isContainedIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Claim"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Report"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isDefinedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isDefinedBy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Environment"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isGuidedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isGuidedBy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Procedure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isImpactedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isImpactedBy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Environment"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isLimitedOrDirectedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isLimitedOrDirectedBy">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#limitsOrDirects"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Control"/>
+        <rdfs:comment xml:lang="af">EIE: sit isInverseOf by waar van toepassing</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isOperatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isOperatedBy">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#operates"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Instrument"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Operator"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isOwnedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isOwnedBy">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#owns"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Owner"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isPartOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isPartOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Project"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isPerformedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isPerformedBy">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#performs"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isPerformedWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isPerformedWith">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#usedToPerform"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Instrument"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isResultOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isResultOf">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#resultsIn"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Output"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Process"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isStateDiffFrom -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isStateDiffFrom">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#State"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#State"/>
+        <rdfs:comment xml:lang="en">EIE vir stateDiff.proto</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isStatedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isStatedIn">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#states"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Requirement"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Specification"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isTimeDependantValueOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isTimeDependantValueOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#State"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isVerifiedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isVerifiedBy">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isVerifierOf"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Claim"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Auditor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isVerifierOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isVerifierOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Auditor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Claim"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#limitsOrDirects -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#limitsOrDirects">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Control"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#makesReport -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#makesReport">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#reportIsMadeBy"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Claimant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Report"/>
+        <rdfs:comment xml:lang="af">EIE: claimant makes report contains claim</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#operates -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#operates">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Operator"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Instrument"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#owns -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#owns">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Owner"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#performs -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#performs">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Agent"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:comment xml:lang="af">EIE</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#reportIsMadeBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#reportIsMadeBy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Report"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Claimant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#resultsIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#resultsIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Process"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Output"/>
+        <rdfs:comment xml:lang="af">EIE</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#states -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#states">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Specification"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Requirement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#usedInActivity -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#usedInActivity">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#usesResource"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Resource"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:comment xml:lang="af">EIE</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#usedToPerform -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#usedToPerform">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Instrument"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#usesResource -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#usesResource">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Resource"/>
+        <rdfs:comment xml:lang="af">EIE</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#usesSymbols -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#usesSymbols">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Formula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ExpressionSymbol"/>
+        <rdfs:comment xml:lang="en">moontlike FIX: in protobuffs repeated ExpressionSymbols</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#verifies -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#verifies">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Audit"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Claim"/>
+        <rdfs:comment xml:lang="en">EIE: a claim about a claim regarding the veracity of the claim which it is made about.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The activity of making sure or demonstrating that something is true, accurate, or justified.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#appliesToParameters -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#appliesToParameters">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Methodology"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">FIX: kan ons nie parameters predefine vir meer semantic richness nie?</rdfs:comment>
+        <rdfs:comment xml:lang="en">The parameters to which this methodology applies.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasAccountingPeriod -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasAccountingPeriod">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactClaim"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasAccuracy -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasAccuracy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MeasurementInstrument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasActivityCode -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasActivityCode">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ActivityClass"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasCodeInRegistry -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasCodeInRegistry">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Indicator"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasConfLowerBound -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasConfLowerBound">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#IndicVal"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ParVal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasConfUpperBound -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasConfUpperBound">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#IndicVal"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ParVal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasConfidenceLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasConfidenceLevel">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#IndicVal"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ParVal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasDefinition -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasDefinition">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Indicator"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasDescription">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Environment"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Instrument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasDuration">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Environment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2006/time#Duration"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasEndDateTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasEndDateTime">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#AccountingPeriod"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Event"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Format: YYYY-MM-DDThh:mm:ss</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasExpression -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasExpression">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Formula"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasLabel -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasLabel">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Location"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">A optional human-understandable label for an entity of type Location, eg. a street adress.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasMake -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasMake">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Instrument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasModality -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasModality">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#State"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">MOONTLIK FIX: ruil 0 en 1 om. boolean is seker as good as any.
+counterfactual or real.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasModel -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasModel">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Instrument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Agent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasNotes -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasNotes">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#IndicVal"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ParVal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasObjective -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasObjective">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Reason why the agent engaged in the activity.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasPrecision -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasPrecision">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Indicator"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MeasurementInstrument"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasProcedureAct -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasProcedureAct">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasProcedureMeth -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasProcedureMeth">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MeasurementMethodology"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasRationale -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasRationale">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Indicator"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasRegistry -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasRegistry">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ActivityClass"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Indicator"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Instrument"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">(where domain is ActivityClass) e.g. IPCC registry or another registry.
+
+FIX: domain is bv. IPCC activities soos gedef in die een of ander ontology</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasRegistryVersion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasRegistryVersion">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Indicator"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Instrument"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasSource -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasSource">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#SourceMethodology"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasStartDateTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasStartDateTime">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#AccountingPeriod"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Event"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Format: YYYY-MM-DDThh:mm:ss</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasTimestamp -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasTimestamp">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#IndicVal"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ParVal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Format: YYYY-MM-DDThh:mm:ss</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasUnitOfMeasure -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasUnitOfMeasure">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Indicator"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#IndicVal"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ParVal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#byte"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isSymbol -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isSymbol">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ExpressionSymbol"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#wasCalibratedOn -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#wasCalibratedOn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MeasurementInstrument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Format: YYYY-MM-DDThh:mm:ss</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#wasManufacturedOn -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#wasManufacturedOn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Instrument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment xml:lang="en">Format: eg. 2022-01-16</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#AccountingPeriod -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#AccountingPeriod">
+        <rdfs:label xml:lang="en">AccountingPeriod</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity">
+        <owl:equivalentClass rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Event"/>
+        <rdfs:comment xml:lang="en">A thing that an agent does, which impacts an environment.
+An act willfully engaged in or performed by an agent.</rdfs:comment>
+        <rdfs:label xml:lang="en">Activity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ActivityClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ActivityClass">
+        <rdfs:comment xml:lang="en">FIX: range is die adres van ‘n eksterne ontologie (kyk na IPCC se categories en maak desnoods ‘n wikipedia page daarvoor op wikipedia sodat dit op dbpedia kan kom)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Agent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Agent">
+        <owl:equivalentClass rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Audit -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Audit">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Auditor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Auditor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Role"/>
+        <rdfs:comment xml:lang="en">&quot;[A] person who conducts an audit.&quot; (OED, Google)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Calculation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Calculation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#CalculationMethodology -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#CalculationMethodology">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MethodologyType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Claim -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Claim">
+        <rdfs:comment xml:lang="af">FIX: tans is die verb claim vervang met die property makesClaim.
+Fix die hele report claim affere</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Claimant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Claimant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Role"/>
+        <rdfs:comment xml:lang="en">[A] person making a claim, especially in a lawsuit or for a state benefit.&quot; (OED, Google)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Condition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Condition">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Control"/>
+        <rdfs:comment xml:lang="en">[A] situation that must exist before something else is possible or permitted.&quot; (OED, Google)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Control -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Control">
+        <rdfs:comment xml:lang="en">&quot;[T]he restriction of an activity, tendency, or phenomenon.&quot; (OED, Google)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Developer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Developer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Role"/>
+        <rdfs:comment xml:lang="en">&quot;[A] person or thing that develops something.&quot; (OED, Google)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#DriverIPP -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#DriverIPP">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactPathwayPosition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#EffectIPP -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#EffectIPP">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactPathwayPosition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Environment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Environment">
+        <rdfs:comment xml:lang="en">The surroundings and conditions in which a thing exists.
+Anything of which the state can be expressed/described in terms of its modifiable properties.
+Anything that can assume at least two different states.
+Anything with modifiable/variable properties that can be used to describe its state.</rdfs:comment>
+        <rdfs:label xml:lang="en">Environment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Event -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Event">
+        <owl:equivalentClass rdf:resource="http://www.w3.org/ns/prov#InstantaneousEvent"/>
+        <rdfs:comment xml:lang="en">&quot;[A] thing that happens or takes place,...&quot; (OED, Google)
+EIE: A change in the environment parameters that is not brought about the willful act of an agent</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ExposureIPP -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ExposureIPP">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactPathwayPosition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ExpressionSymbol -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ExpressionSymbol"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Formula -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Formula"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactClaim -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactClaim">
+        <rdfs:comment xml:lang="en">An instance of ImpactClaim should have an associated object for each predicate for which ImpactClaim is defined to be the subject.
+
+FIX: moontlike check hiervoor?</rdfs:comment>
+        <rdfs:label xml:lang="en">Impact claim</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactPathwayPosition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactPathwayPosition"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#IndicVal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#IndicVal">
+        <rdfs:label xml:lang="en">IndicVal</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Indicator -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Indicator">
+        <rdfs:comment xml:lang="en">&quot;[A] thing that indicates the state or level of something.&quot; (OED, Google)
+The difference between an Indicator and a Parameter depends on what the state is that you are interested in. In scenario Y, some indicators of scenario X are just parameters.</rdfs:comment>
+        <rdfs:label xml:lang="en">Indicator</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Input -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Input">
+        <rdfs:comment xml:lang="en">&quot;[W]hat is put in, taken in, or operated on by any process or system.&quot; (OED, Google)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Instrument -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Instrument">
+        <rdfs:comment xml:lang="en">&quot;[A] tool or implement, especially one for precision work.&quot; (OED, Google)
+An instrument is used by an agent to perform an activity.</rdfs:comment>
+        <owl:incompatibleWith xml:lang="en">Instrument</owl:incompatibleWith>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#LegalPerson -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#LegalPerson">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Line -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Line">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Location"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Location -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Location">
+        <rdfs:comment xml:lang="en">An entity of type Location can be a Point, Line, Polygon, or Volume. A point has a x and y (and optional z) coordinate. If no z coordinate is specified, sea level is assumed. A line comprises exactly two points. A polygon is the area enclosed by three or more points. A volume is the area enclosed by four or more polygons where each edge is shared by exactly two polygons. Length can be derived from a given Line, area from a given Polygon, and volume from a given Volume.</rdfs:comment>
+        <rdfs:comment xml:lang="af">FIX: gebruik bestaande</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Measure -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Measure">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Activity"/>
+        <rdfs:comment xml:lang="en">The activity of ascertaining the value of a parameter defining a state.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MeasurementInstrument -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MeasurementInstrument">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Instrument"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MeasurementMethodology -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MeasurementMethodology">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MethodologyType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Methodology -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Methodology">
+        <rdfs:comment xml:lang="en">FIX: is ons SEKER ons soek nie identifiers nie?</rdfs:comment>
+        <rdfs:label xml:lang="en">Methodology</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MethodologyType -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MethodologyType">
+        <rdfs:comment xml:lang="en">FIX: &quot;Consider extracting &quot;procedure&quot; and &quot;source&quot; into classes of their own.&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#NaturalPerson -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#NaturalPerson">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Objective -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Objective">
+        <rdfs:comment xml:lang="en">&quot;[R]esult to be achieved.&quot; (ISO Annex SL Appendix 2)</rdfs:comment>
+        <rdfs:comment xml:lang="af">FIX: moontlik uit SDG ontology</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Operator -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Operator">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Role"/>
+        <rdfs:comment xml:lang="en">&quot;[A] person who operates equipment or a machine.&quot; (OED, Google)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Output -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Output">
+        <rdfs:comment xml:lang="en">&quot;[R]esult of a process.&quot; (ISO 9000:2015(E))</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Owner -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Owner">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Role"/>
+        <rdfs:comment xml:lang="en">An agent who owns a thing.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ParVal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ParVal"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter">
+        <rdfs:comment xml:lang="en">A numerical or other measurable quality or feature forming one of a set that defines a thing or sets the conditions of its existence or operation.</rdfs:comment>
+        <rdfs:label xml:lang="en">Parameter</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Point -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Point">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Location"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Polygon -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Polygon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Location"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#PressureIPP -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#PressureIPP">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactPathwayPosition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Procedure -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Procedure">
+        <owl:equivalentClass rdf:resource="http://www.w3.org/ns/prov#Plan"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Control"/>
+        <rdfs:comment xml:lang="en">&quot;[A]n established or official way of doing something.&quot; (OED, Google)
+&quot;A plan is an entity that represents a set of actions or steps intended by one or more agents to achieve some goals.&quot; (http://www.w3.org/ns/prov#Plan)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Process -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Process">
+        <rdfs:comment xml:lang="en">&quot;[A] series of actions or steps taken in order to achieve a particular end.&quot; (OED, Google)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Project -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Project">
+        <rdfs:comment xml:lang="en">&quot;[A]n individual or collaborative enterprise that is carefully planned to achieve a particular aim.&quot; (OED, Google)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Report -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Report"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Reputation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Reputation">
+        <rdfs:comment xml:lang="en">&quot;[T]he beliefs or opinions that are generally held about someone or something.&quot; (OED, Google)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Requirement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Requirement">
+        <rdfs:comment xml:lang="en">&quot;[A] thing that is needed or wanted.&quot; (OED, Google)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Resource -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Resource">
+        <rdfs:comment xml:lang="en">&quot;[A] stock or supply of money, materials, staff, and other assets that can be drawn on by a person or organization in order to function effectively.&quot; (OED, Google)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Role -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Role">
+        <owl:equivalentClass rdf:resource="http://www.w3.org/ns/prov#Role"/>
+        <rdfs:comment xml:lang="en">&quot;[T]he function assumed or part played by a person or thing in a particular situation.&quot; (OED, Google)
+&quot;A role is the function of an entity or agent with respect to an activity, in the context of a usage, generation, invalidation, association, start, and end.&quot; (http://www.w3.org/ns/prov#Role)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#SourceMethodology -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#SourceMethodology">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MethodologyType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Specification -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Specification">
+        <rdfs:comment xml:lang="en">&quot;[D]ocument stating requirements.&quot; (ISO 9000:2015(E))</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#State -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#State">
+        <rdfs:comment xml:lang="en">A state is the value of a parameter P at time t.
+
+FIX: (Perhaps try to get to a definition that does not involve the term &quot;time&quot;, unless we define &quot;time&quot; itself too.)</rdfs:comment>
+        <rdfs:label xml:lang="en">State</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#StateDiff -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#StateDiff">
+        <rdfs:label xml:lang="en">StateDiff</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#StateIPP -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#StateIPP">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactPathwayPosition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Variable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Variable"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Volume -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Volume">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Location"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing">
+        <owl:equivalentClass rdf:resource="https://www.w3.org/ns/prov#Entity"/>
+        <rdfs:comment xml:lang="en">&quot;Anything perceivable or conceivable.&quot; (&quot;object&quot; - ISO 9000:2015(E))
+
+&quot;An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.&quot; (https://www.w3.org/ns/prov#Entity)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Activity -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Activity"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Agent -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Agent"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#InstantaneousEvent -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#InstantaneousEvent"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Plan -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Plan"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Role -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Role"/>
+    
+
+
+    <!-- https://www.w3.org/ns/prov#Entity -->
+
+    <owl:Class rdf:about="https://www.w3.org/ns/prov#Entity"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
