@@ -25,6 +25,10 @@ owl:equivalentProperty rdf:type owl:AnnotationProperty .
 owl:sameAs rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2004/02/skos/core#broader
+<http://www.w3.org/2004/02/skos/core#broader> rdf:type owl:AnnotationProperty .
+
+
 #################################################################
 #    Datatypes
 #################################################################
@@ -108,7 +112,7 @@ time:Duration rdf:type rdfs:Datatype .
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasContent
 :hasContent rdf:type owl:ObjectProperty ;
-            rdfs:domain :ImpactClaim ;
+            rdfs:domain :Claim ;
             rdfs:range owl:Thing ;
             rdfs:comment "EIE"@af .
 
@@ -150,6 +154,20 @@ time:Duration rdf:type rdfs:Datatype .
                     rdfs:range :MethodologyType .
 
 
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasPeriod
+:hasPeriod rdf:type owl:ObjectProperty ;
+           rdfs:domain :Activity ,
+                       :Event ,
+                       :Project ;
+           rdfs:range :Period .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasPoint
+:hasPoint rdf:type owl:ObjectProperty ;
+          rdfs:domain :Location ;
+          rdfs:range :Point .
+
+
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasReputation
 :hasReputation rdf:type owl:ObjectProperty ;
                rdfs:domain :Agent ;
@@ -160,7 +178,8 @@ time:Duration rdf:type rdfs:Datatype .
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasSDG
 :hasSDG rdf:type owl:ObjectProperty ;
         rdfs:domain :Activity ;
-        rdfs:range <http://metadata.un.org/sdg/ontology#Goal> .
+        rdfs:range <http://metadata.un.org/sdg/ontology#Goal> ;
+        <http://www.w3.org/2004/02/skos/core#broader> :hasObjective .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasSymbol
@@ -582,14 +601,14 @@ FIX: domain is bv. IPCC activities soos gedef in die een of ander ontology"""@en
 :hasUnitOfMeasure rdf:type owl:DatatypeProperty ;
                   rdfs:domain :Indicator ,
                               :Parameter ;
-                  rdfs:range xsd:string .
+                  rdfs:range rdf:PlainLiteral .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasValue
 :hasValue rdf:type owl:DatatypeProperty ;
           rdfs:domain :IndicVal ,
                       :ParVal ;
-          rdfs:range rdf:XMLLiteral .
+          rdfs:range rdf:PlainLiteral .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isSymbol
@@ -598,23 +617,23 @@ FIX: domain is bv. IPCC activities soos gedef in die een of ander ontology"""@en
           rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#locationHasX
-:locationHasX rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Location ;
-              rdfs:range rdfs:Literal .
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#pointHasAltitude
+:pointHasAltitude rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Point ;
+                  rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#locationHasY
-:locationHasY rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Location ;
-              rdfs:range rdfs:Literal ;
-              rdfs:comment "EIE: fix range"@af .
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#pointHasLatitude
+:pointHasLatitude rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Point ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "EIE: fix range"@af .
 
 
-###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#locationHasZ
-:locationHasZ rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Location ;
-              rdfs:range rdfs:Literal .
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#pointHasLongtitude
+:pointHasLongtitude rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Point ;
+                    rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#wasCalibratedOn
@@ -633,25 +652,20 @@ FIX: domain is bv. IPCC activities soos gedef in die een of ander ontology"""@en
 
 ###  http://www.w3.org/2006/time#hasDuration
 time:hasDuration rdf:type owl:DatatypeProperty ;
-                 rdfs:domain :Activity ,
-                             :Environment ;
+                 rdfs:domain :Period ;
                  rdfs:range time:Duration .
 
 
 ###  http://www.w3.org/ns/prov#endedAtTime
 <http://www.w3.org/ns/prov#endedAtTime> rdf:type owl:DatatypeProperty ;
-                                        rdfs:domain :AccountingPeriod ,
-                                                    :Activity ,
-                                                    :Event ;
+                                        rdfs:domain :Period ;
                                         rdfs:range xsd:dateTime ;
                                         rdfs:comment "Format: YYYY-MM-DDThh:mm:ss"@en .
 
 
 ###  http://www.w3.org/ns/prov#startedAtTime
 <http://www.w3.org/ns/prov#startedAtTime> rdf:type owl:DatatypeProperty ;
-                                          rdfs:domain :AccountingPeriod ,
-                                                      :Activity ,
-                                                      :Event ;
+                                          rdfs:domain :Period ;
                                           rdfs:range xsd:dateTime ;
                                           rdfs:comment "Format: YYYY-MM-DDThh:mm:ss"@en .
 
@@ -664,20 +678,9 @@ time:hasDuration rdf:type owl:DatatypeProperty ;
 <http://metadata.un.org/sdg/ontology#Goal> rdf:type owl:Class .
 
 
-###  http://metadata.un.org/sdg/ontology/Period
-<http://metadata.un.org/sdg/ontology/Period> rdf:type owl:Class ;
-                                             rdfs:comment """FIX:
-accounting period 
-porject period
-crediting period
-notas
-
-en period het start en end en duration"""@af .
-
-
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#AccountingPeriod
 :AccountingPeriod rdf:type owl:Class ;
-                  rdfs:subClassOf <http://metadata.un.org/sdg/ontology/Period> ;
+                  rdfs:subClassOf :Period ;
                   rdfs:label "AccountingPeriod"@en .
 
 
@@ -743,6 +746,11 @@ Fix die hele report claim affere"""@af .
          rdfs:comment "\"[T]he restriction of an activity, tendency, or phenomenon.\" (OED, Google)"@en .
 
 
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#CreditingPeriod
+:CreditingPeriod rdf:type owl:Class ;
+                 rdfs:subClassOf :Period .
+
+
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Developer
 :Developer rdf:type owl:Class ;
            rdfs:subClassOf :Role ;
@@ -790,6 +798,7 @@ EIE: A change in the environment parameters that is not brought about the willfu
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactClaim
 :ImpactClaim rdf:type owl:Class ;
+             rdfs:subClassOf :Claim ;
              rdfs:comment """An instance of ImpactClaim should have an associated object for each predicate for which ImpactClaim is defined to be the subject.
 
 FIX: moontlike check hiervoor?"""@en ;
@@ -836,7 +845,7 @@ An instrument is used by an agent to perform an activity."""@en ;
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Location
 :Location rdf:type owl:Class ;
-          rdfs:comment "An entity of type Location can be a Point, Line, Polygon, or Volume. A point has a x and y (and optional z) coordinate. If no z coordinate is specified, sea level is assumed. A line comprises exactly two points. A polygon is the area enclosed by three or more points. A volume is the area enclosed by four or more polygons where each edge is shared by exactly two polygons. Length can be derived from a given Line, area from a given Polygon, and volume from a given Volume."@en ,
+          rdfs:comment "An entity of type Location can be a Point, Line, Path, Polygon, or Volume. A point has a x and y (and optional z) coordinate. If no z coordinate is specified, sea level is assumed. A line comprises exactly two points. A path is two or more continuous lines. A polygon is the area enclosed by three or more points. A volume is the area enclosed by four or more polygons where each edge is shared by exactly two polygons. Length can be derived from a given Line, area from a given Polygon, and volume from a given Volume."@en ,
                        "FIX: gebruik bestaande"@af .
 
 
@@ -858,13 +867,13 @@ An instrument is used by an agent to perform an activity."""@en ;
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Methodology
 :Methodology rdf:type owl:Class ;
-             rdfs:comment "FIX: is ons SEKER ons soek nie identifiers nie?"@en ;
              rdfs:label "Methodology"@en .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#MethodologyType
 :MethodologyType rdf:type owl:Class ;
-                 rdfs:comment "FIX: \"Consider extracting \"procedure\" and \"source\" into classes of their own.\""@en .
+                 rdfs:comment "FIX: \"Consider extracting \"procedure\" and \"source\" into classes of their own.\""@en ,
+                              "FIX: hoe besluit ons bv. watter CDM methodologies is watse MethType?"@en .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#NaturalPerson
@@ -905,6 +914,18 @@ An instrument is used by an agent to perform an activity."""@en ;
            rdfs:label "Parameter"@en .
 
 
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Path
+:Path rdf:type owl:Class ;
+      rdfs:subClassOf :Location .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Period
+:Period rdf:type owl:Class ;
+        owl:equivalentClass time:Interval ;
+        rdfs:comment """Activity, Project, and Event are in the domain of hasPeriod; the range is Period.
+Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDuration functions."""@en .
+
+
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Point
 :Point rdf:type owl:Class ;
        rdfs:subClassOf :Location .
@@ -936,6 +957,11 @@ An instrument is used by an agent to perform an activity."""@en ;
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Project
 :Project rdf:type owl:Class ;
          rdfs:comment "\"[A]n individual or collaborative enterprise that is carefully planned to achieve a particular aim.\" (OED, Google)"@en .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ProjectPeriod
+:ProjectPeriod rdf:type owl:Class ;
+               rdfs:subClassOf :Period .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Report
@@ -984,6 +1010,7 @@ FIX: (Perhaps try to get to a definition that does not involve the term \"time\"
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#StateDiff
 :StateDiff rdf:type owl:Class ;
+           rdfs:comment "FIX: die impact is obviously 'n funksie van die state before en die state after, maar hoe quantify ons daardie verskil?"@af ;
            rdfs:label "StateDiff"@en .
 
 
@@ -1007,6 +1034,10 @@ owl:Thing rdf:type owl:Class ;
           rdfs:comment """\"Anything perceivable or conceivable.\" (\"object\" - ISO 9000:2015(E))
 
 \"An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.\" (https://www.w3.org/ns/prov#Entity)"""@en .
+
+
+###  http://www.w3.org/2006/time#Interval
+time:Interval rdf:type owl:Class .
 
 
 ###  http://www.w3.org/ns/prov#Activity
