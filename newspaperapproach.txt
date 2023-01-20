@@ -1,0 +1,9 @@
+Follow the newspaper article approach when annotating, for example, the PDD of an existing anthropogenic impact project:
+Who, where, when, what, how, what.
+Who: an Agent
+Where: a Location
+When: a Period (projectPeriod, accountingPeriod, or creditingPeriod)
+What:
+How: a Procedure, with inputs, outputs and instruments specified
+Why: an Objective (every Activity is guided by a Procedure, and every Procedure has an Objective.)
+What:

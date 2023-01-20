@@ -1,15 +1,12 @@
 @prefix : <http://purl.org/aiaontology#> .
 @prefix cdmo: <http://www.semanticweb.org/lucia/ontologies/2023/0/cdmontology> .
 @prefix cdmm: <http://aia-projects.org/cdmmethodologies/> .
-@prefix dbp: <http//dbpedia.org/page/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sdgo: <http://metadata.un.org/sdg/ontology> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix time: <http://www.w3.org/2006/time#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @base <http://aia-projects.org/CDM10634#> .
 
@@ -26,12 +23,14 @@
     :hasProjectPeriod <projectPeriod> ;
     :hasCreditingPeriod <creditingPeriod> ;
     # what
+    # BASICALLY NET 'N BESKRYWENDE SIN - KOMBINASIE VAN DIE ANDER (INPUTS, OUTPUTS, PROC, INSTR.)
     :comprises <projectActivities> ;
     # why
     :hasObjective "Export renewable electricity produced by solar PV power project to the power deficit grid in order to decrease power shortage, diversify the grid and reduce greenhouse gas emissions." ;
     :hasObjective "Contribute to social, economic, environmental and technological well-being." ;
     :hasSDG sdgo:7, sdgo:13 ;
     # how
+    # DIE PROCEDURE IS DIE HOW; INPUT, OUTPUT, INSTRUMENTS
     :hasMethodology cdmm:AMS-I.D ;
     cdmo:hasSectoralScope cdmo:sectoralScope1 ;
     cdmo:usesTool <tool07> .
@@ -54,16 +53,23 @@
     :hasDuration "25 years" ;
     :hasEndDateTime "2042-03-29Z00:00:00"^^xsd:dateTime .
 
-<solarModules> a :Resource ;
-    rdfs:label "Poly Crystalline type 37,450 Solar PV modules having capacity of 325 Wp and 320 Wp of Canadian solar make and 8 nos. of invertor of Hitachi make with rating capacity 1250 KW."^^xsd:string .
-    #TODO: add more resources
-    # see also links na die technical specifications van die selle, inverters, en transformers
+<procedure> a :Procedure .
+# BEGIN MAANDAG HIER
+<solarModules> a :Instrument ;
+    :hasMake "Hitachi"^^xsd:string ;
+    :hasDescription "Poly Crystalline type 37,450 Solar PV modules having capacity of 325 Wp and 320 Wp of Canadian solar make and 8 nos. of invertor of Hitachi make with rating capacity 1250 KW." .
+
+<procedure> :hasInstrument <solarModules> ;
+    :hasOutput "18,775 MWh electricity"^^xsd:string .
+# KYK NA LUCIDCHART. HIERDIE GOED IS INSTRUMENTS WAT GEBRUIK WORD IN DIE AKTW
+# OUTPUTS IS BV DIE ENERGIE
 
 <projectActivities> a :Activity ;
     # how do we actually describe the activities?
     rdfs:label "KWFDPL has set up a Solar PV Power Project in Mohari Village, Jamkhed taluka, District Ahmednagar in Maharashtra state. This Installed solar power project is based on Poly Crystalline Silicon Photo Voltaic technology. Sun light with the help of PV modules will be converted into D.C. power which will then be combined to get the desired level of current and voltage. Now this D.C. output will be converted with the help of Inverters into the A.C. power of certain voltage and current level. At this stage current and voltage level can be stepped up with the help of transformers which then will be injected into the grid through distribution licensee substation."^^xsd:string ;
     :usesResource <solarModules> .
 
+# TOOL07 IS NET 'N VERDERE PROCEDURE
 <tool07> a cdmo:MethodologicalTool ;
     owl:sameAs cdmo:tool07 ;
     # TODO: extract the important parameters and other standardised information for methodologies/tools to its own vocabulary.
@@ -80,8 +86,10 @@
         :hasUnitOfMeasure "t CO2/MWh"^^xsd:string] .
 
 #claim information
-<stateBefore> a :State ;
+<baselineState> a :State ;
     # are statements about the :State of an :Environment also claims to be validated?
+    # PARVAL IS SPESIFIEK DIE WAARDE VAN 'N PARAMETER
+    # KORRIGEER HIEDIE SINTAKS
     :hasParVal [:hasName "annualAveGHGEmissions"^^xsd:string ;
         :hasUnitOfMeasure "tCO2e"^^xsd:string ;
         :hasValue "HOEMOETEKWEET"^^xsd:string] ,
@@ -90,7 +98,7 @@
         :hasUnitOfMeasure "MWh"^^xsd:string ;
         :hasValue "0"^^xsd:float] .
 
-<stateAfter> a :State ;
+<projectState> a :State ;
     :hasParVal [:hasName "annualAveGHGEmissions"^^xsd:string ;
         :hasUnitOfMeasure "tCO2e"^^xsd:string ;
         :hasValue "annualAveGHGEmissions - 18123"^^xsd:string] ,
@@ -100,6 +108,7 @@
     :hasValue "18775"^^xsd:float] .
 
 <impact> a :State ;
+    # KORRIGEER HIERDIE SINTAKS
     :hasParameter [:hasName "EFgrid,CM,y"^^xsd:string ;
         rdfs:label "Combined margin CO2 emission factor for the project electricity system in year y"^^xsd:string ;
         skos:prefLabel "Baseline Emission Factor"^^xsd:string ;
@@ -121,10 +130,15 @@
         :hasUnitOfMeasure "average t CO2/MWh/year"^^xsd:string ;
         :hasValue "18123"^^xsd:float] .
 
+<SD> a :StateDiff ;
+    :hasState1 <baselineState> ;
+    :hasState2 <projectState> .
+
 <impactclaim> a :ImpactClaim ;
-    :hasImpactPathwayPos :StateIPP ;
+    :hasStateDiff <SD> ;
     :hasClaimant <KWFDPL> ;
     :hasAccountingPeriod <accountingPeriod> ;
+    # TODO SIT BETER AUX VERB IN - REGARDING
     :hasActivities <projectActivities> ;
     :hasContent <impact> .
 
