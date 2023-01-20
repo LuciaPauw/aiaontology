@@ -52,6 +52,7 @@ time:Duration rdf:type rdfs:Datatype .
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#comprises
 :comprises rdf:type owl:ObjectProperty ;
            owl:inverseOf :isPartOf ;
+           rdf:type owl:ReflexiveProperty ;
            rdfs:domain :Project ;
            rdfs:range :Activity ;
            rdfs:comment "EIE"@af .
@@ -87,7 +88,8 @@ time:Duration rdf:type rdfs:Datatype .
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasActivities
 :hasActivities rdf:type owl:ObjectProperty ;
                rdfs:domain :ImpactClaim ;
-               rdfs:range :Activity .
+               rdfs:range :Activity ;
+               rdfs:comment "FIX: liewer hasContent?"@af .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasActivityClass
@@ -152,6 +154,13 @@ time:Duration rdf:type rdfs:Datatype .
 :hasMethodologyType rdf:type owl:ObjectProperty ;
                     rdfs:domain :Methodology ;
                     rdfs:range :MethodologyType .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasParameter
+:hasParameter rdf:type owl:ObjectProperty ;
+              rdfs:domain :Activity ,
+                          :Methodology ;
+              rdfs:range :Parameter .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasPeriod
@@ -416,6 +425,12 @@ time:Duration rdf:type rdfs:Datatype .
                      rdfs:range xsd:string ;
                      rdfs:comment "FIX: kan ons nie parameters predefine vir meer semantic richness nie?"@en ,
                                   "The parameters to which this methodology applies."@en .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#conditionDefinedBy
+:conditionDefinedBy rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Condition ;
+                    rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasAccountingPeriod
@@ -905,7 +920,8 @@ An instrument is used by an agent to perform an activity."""@en ;
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ParVal
-:ParVal rdf:type owl:Class .
+:ParVal rdf:type owl:Class ;
+        rdfs:comment "FIX: moet ons parameter en parval he? en if so, wat is hulle interaksie?"@af .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Parameter

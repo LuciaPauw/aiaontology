@@ -1,11 +1,13 @@
-@prefix : <http://purl.org/aiaontology.org#> .
-@prefix aiap: <http://aia-projects.org#> .
+@prefix : <http://purl.org/aiaontology#> .
 @prefix cdmo: <http://www.semanticweb.org/lucia/ontologies/2023/0/cdmontology> .
+@prefix cdmm: <http://aia-projects.org/cdmmethodologies/> .
 @prefix dbp: <http//dbpedia.org/page/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sdgo: <http://metadata.un.org/sdg/ontology> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -30,7 +32,7 @@
     :hasObjective "Contribute to social, economic, environmental and technological well-being." ;
     :hasSDG sdgo:7, sdgo:13 ;
     # how
-    :hasMethodology cdmo:AMS-I.D ;
+    :hasMethodology cdmm:AMS-I.D ;
     cdmo:hasSectoralScope cdmo:sectoralScope1 ;
     cdmo:usesTool <tool07> .
 
@@ -62,11 +64,6 @@
     rdfs:label "KWFDPL has set up a Solar PV Power Project in Mohari Village, Jamkhed taluka, District Ahmednagar in Maharashtra state. This Installed solar power project is based on Poly Crystalline Silicon Photo Voltaic technology. Sun light with the help of PV modules will be converted into D.C. power which will then be combined to get the desired level of current and voltage. Now this D.C. output will be converted with the help of Inverters into the A.C. power of certain voltage and current level. At this stage current and voltage level can be stepped up with the help of transformers which then will be injected into the grid through distribution licensee substation."^^xsd:string ;
     :usesResource <solarModules> .
 
-cdmo:AMS-I.D a :Methodology ;
-    #hasMethodologyType? how to decide (Calculation, Measurement, or Source)
-    :hasBaselineScenario "Electricity provided to the grid by more-GHG-intensive means." ;
-    :hasProjectScenario "Electricity is generated and supplied to the grid using renewable energy technologies." .
-
 <tool07> a cdmo:MethodologicalTool ;
     owl:sameAs cdmo:tool07 ;
     # TODO: extract the important parameters and other standardised information for methodologies/tools to its own vocabulary.
@@ -81,8 +78,6 @@ cdmo:AMS-I.D a :Methodology ;
     [:hasName "EFgrid,OM,y"^^xsd:string ;
         rdfs:label "Operating margin CO2 emission factor for the project electricity system in year y"^^xsd:string ;
         :hasUnitOfMeasure "t CO2/MWh"^^xsd:string] .
-
-
 
 #claim information
 <stateBefore> a :State ;
