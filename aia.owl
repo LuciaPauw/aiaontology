@@ -931,7 +931,7 @@ Differs from input; input is consumed during the Activity, while an Instrument i
            rdfs:comment "EDIT: every Procedure has an Objective"@en ,
                         "NOT FINAL \"[R]esult to be achieved.\" (ISO Annex SL Appendix 2)"@en ;
            rdfs:label "Objective"@en ;
-           owl:equivalentClass <http://metadata.un.org/sdg/ontology#Goal > ;
+           owl:equivalentClass <http://metadata.un.org/sdg/ontology#Goal> ;
            <http://www.w3.org/2004/02/skos/core#altLabel> "Goal"@en .
 
 
