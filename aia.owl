@@ -110,6 +110,13 @@ time:Duration rdf:type rdfs:Datatype .
                   rdfs:range :ActivityClass .
 
 
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasCRS
+:hasCRS rdf:type owl:ObjectProperty ;
+        rdfs:domain :Location ;
+        rdfs:range :CRS ;
+        rdfs:comment "EDIT"@en .
+
+
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#hasCalculation
 :hasCalculation rdf:type owl:ObjectProperty ;
                 rdfs:domain :CalculationMethodology ,
@@ -249,6 +256,14 @@ time:Duration rdf:type rdfs:Datatype .
          rdfs:domain :Activity ,
                      :Event ;
          rdfs:range :Environment .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#impliesType
+:impliesType rdf:type owl:ObjectProperty ;
+             rdfs:domain :CRS ;
+             rdfs:range :Location ;
+             rdfs:comment "EDIT"@en ,
+                          "FIX"@en .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#isContainedIn
@@ -703,6 +718,11 @@ time:hasDuration rdf:type owl:DatatypeProperty ;
 #    Classes
 #################################################################
 
+###  http://metadata.un.org/sdg/ontology#Goal
+<http://metadata.un.org/sdg/ontology#Goal> rdf:type owl:Class ;
+                                           owl:equivalentClass :Objective .
+
+
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#AccountingPeriod
 :AccountingPeriod rdf:type owl:Class ;
                   rdfs:subClassOf :Period ;
@@ -742,6 +762,12 @@ time:hasDuration rdf:type owl:DatatypeProperty ;
          rdfs:subClassOf :Role ;
          rdfs:comment "\"[A] person who conducts an audit.\" (OED, Google)"@en ,
                       "FIX: auditor vs verifier"@en .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#CRS
+:CRS rdf:type owl:Class ;
+     rdfs:comment "EDIT"@en ;
+     rdfs:label "Coordinate Reference System"@en .
 
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Calculation
@@ -843,6 +869,16 @@ time:hasDuration rdf:type owl:DatatypeProperty ;
 :Formula rdf:type owl:Class .
 
 
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#GPS
+:GPS rdf:type owl:Class ;
+     rdfs:subClassOf :CRS ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :impliesType ;
+                       owl:allValuesFrom :Point
+                     ] ;
+     rdfs:label "Global Positioning System"@en .
+
+
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#ImpactClaim
 :ImpactClaim rdf:type owl:Class ;
              rdfs:subClassOf :Claim ;
@@ -866,9 +902,10 @@ FIX: moontlike check hiervoor?"""@en ;
 
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Indicator
 :Indicator rdf:type owl:Class ;
-           rdfs:comment """NOT FINAL \"[A] thing that indicates the state or level of something.\" (OED, Google)
+           rdfs:comment "FIX: differece between parameter and indicator"@en ,
+                        """NOT FINAL \"[A] thing that indicates the state or level of something.\" (OED, Google)
 
-The difference between an Indicator and a Parameter depends on what the state is that you are interested in. In scenario Y, some indicators of scenario X are just parameters."""@en ;
+The difference between an Indicator and a Parameter depends on what the state is that you are interested in. In scenario Y, some indicators of scenario X are just parameters. (FIX)"""@en ;
            rdfs:label "Indicator"@en .
 
 
@@ -931,7 +968,6 @@ Differs from input; input is consumed during the Activity, while an Instrument i
            rdfs:comment "EDIT: every Procedure has an Objective"@en ,
                         "NOT FINAL \"[R]esult to be achieved.\" (ISO Annex SL Appendix 2)"@en ;
            rdfs:label "Objective"@en ;
-           owl:equivalentClass <http://metadata.un.org/sdg/ontology#Goal> ;
            <http://www.w3.org/2004/02/skos/core#altLabel> "Goal"@en .
 
 
@@ -1077,6 +1113,16 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 ###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#Volume
 :Volume rdf:type owl:Class ;
         rdfs:subClassOf :Location .
+
+
+###  http://www.semanticweb.org/lucia/ontologies/2023/0/aia#W3W
+:W3W rdf:type owl:Class ;
+     rdfs:subClassOf :CRS ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :impliesType ;
+                       owl:allValuesFrom :Polygon
+                     ] ;
+     rdfs:label "what3words"@en .
 
 
 ###  http://www.w3.org/2002/07/owl#Thing
