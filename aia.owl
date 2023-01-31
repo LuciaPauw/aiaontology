@@ -1162,6 +1162,16 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
                               ] ;
           rdfs:subClassOf :Role .
 
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :Verifier ;
+   owl:annotatedProperty owl:equivalentClass ;
+   owl:annotatedTarget [ rdf:type owl:Restriction ;
+                         owl:onProperty :isVerifierOf ;
+                         owl:someValuesFrom :Claim
+                       ] ;
+   rdfs:comment "FIX: more complex and complete Controls for Agents to fulfill certain Roles to be added"@en
+ ] .
+
 
 ###  http://purl.org/aiaontology#Volume
 :Volume rdf:type owl:Class ;
