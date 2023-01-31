@@ -1,15 +1,12 @@
 @prefix : <http://purl.org/aiaontology#> .
-@prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix dcmitype:<http://purl.org/dc/dcmitype/> .
-@prefix dct: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix time: <http://www.w3.org/2006/time#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @base <http://purl.org/aiaontology> .
 
 <http://purl.org/aiaontology> rdf:type owl:Ontology .
@@ -51,11 +48,11 @@ skos:related rdf:type owl:AnnotationProperty .
 #################################################################
 
 ###  http://dbpedia.org/ontology/person
-dbo:person rdf:type rdfs:Datatype .
+<http://dbpedia.org/ontology/person> rdf:type rdfs:Datatype .
 
 
 ###  http://purl.org/dc/terms/date
-dct:date rdf:type rdfs:Datatype .
+<http://purl.org/dc/terms/date> rdf:type rdfs:Datatype .
 
 
 ###  http://www.w3.org/2000/01/rdf-schema#Resource
@@ -64,7 +61,7 @@ rdfs:Resource rdf:type rdfs:Datatype .
 
 ###  http://www.w3.org/2001/XMLSchema#date
 xsd:date rdf:type rdfs:Datatype ;
-         owl:equivalentClass dct:date .
+         owl:equivalentClass <http://purl.org/dc/terms/date> .
 
 
 ###  http://www.w3.org/2006/time#Duration
@@ -86,6 +83,12 @@ time:Duration rdf:type rdfs:Datatype .
 :calibrates rdf:type owl:ObjectProperty ;
             rdfs:domain :Calibrator ;
             rdfs:range :MeasurementInstrument .
+
+
+###  http://purl.org/aiaontology#compliesWithRequirements
+:compliesWithRequirements rdf:type owl:ObjectProperty ;
+                          rdfs:domain :Auditor ;
+                          rdfs:range :Control .
 
 
 ###  http://purl.org/aiaontology#comprises
@@ -136,7 +139,6 @@ time:Duration rdf:type rdfs:Datatype .
 
 ###  http://purl.org/aiaontology#hasCalculation
 :hasCalculation rdf:type owl:ObjectProperty ;
-                rdfs:domain :Indicator ;
                 rdfs:range :Calculation .
 
 
@@ -197,8 +199,7 @@ time:Duration rdf:type rdfs:Datatype .
 
 ###  http://purl.org/aiaontology#hasMethodology
 :hasMethodology rdf:type owl:ObjectProperty ;
-                rdfs:domain :ImpactClaim ,
-                            :State ;
+                rdfs:domain :ImpactClaim ;
                 rdfs:range :Control .
 
 
@@ -210,7 +211,7 @@ time:Duration rdf:type rdfs:Datatype .
 
 ###  http://purl.org/aiaontology#hasParVal
 :hasParVal rdf:type owl:ObjectProperty ;
-           owl:inverseOf :isTimeDependantValueOf ;
+           owl:inverseOf :isParValOf ;
            rdfs:domain :Parameter ,
                        :Variable ;
            rdfs:range :State .
@@ -225,6 +226,12 @@ time:Duration rdf:type rdfs:Datatype .
 :hasPoint rdf:type owl:ObjectProperty ;
           rdfs:domain :Location ;
           rdfs:range :Point .
+
+
+###  http://purl.org/aiaontology#hasProvenance
+:hasProvenance rdf:type owl:ObjectProperty ;
+               rdfs:domain :State ;
+               rdfs:range :Activity .
 
 
 ###  http://purl.org/aiaontology#hasReputation
@@ -320,6 +327,13 @@ time:Duration rdf:type rdfs:Datatype .
            rdfs:range :Owner .
 
 
+###  http://purl.org/aiaontology#isParValOf
+:isParValOf rdf:type owl:ObjectProperty ,
+                     owl:AsymmetricProperty ;
+            rdfs:domain :State ;
+            rdfs:range :Parameter .
+
+
 ###  http://purl.org/aiaontology#isPerformedBy
 :isPerformedBy rdf:type owl:ObjectProperty ;
                owl:inverseOf :performs ;
@@ -338,13 +352,6 @@ time:Duration rdf:type rdfs:Datatype .
 :isStateDiffFrom rdf:type owl:ObjectProperty ;
                  rdfs:domain :State ;
                  rdfs:range :State .
-
-
-###  http://purl.org/aiaontology#isTimeDependantValueOf
-:isTimeDependantValueOf rdf:type owl:ObjectProperty ,
-                                 owl:AsymmetricProperty ;
-                        rdfs:domain :State ;
-                        rdfs:range :Parameter .
 
 
 ###  http://purl.org/aiaontology#isVerifiedBy
@@ -370,7 +377,8 @@ time:Duration rdf:type rdfs:Datatype .
 ###  http://purl.org/aiaontology#makesClaim
 :makesClaim rdf:type owl:ObjectProperty ;
             rdfs:domain :Agent ;
-            rdfs:range :Claim .
+            rdfs:range :Claim ;
+            rdfs:comment "FIX: this does not work while Role exists/Auditor etc. is not a subClassOf Agent."@en .
 
 
 ###  http://purl.org/aiaontology#makesImpactClaim
@@ -400,7 +408,8 @@ time:Duration rdf:type rdfs:Datatype .
 ###  http://purl.org/aiaontology#regardsVeracity
 :regardsVeracity rdf:type owl:ObjectProperty ;
                  rdfs:domain :Claim ;
-                 rdfs:range :Claim .
+                 rdfs:range :Claim ;
+                 rdfs:comment "FIX: this does not work while Role exists/Auditor etc. is not a subClassOf Agent."@en .
 
 
 ###  http://purl.org/aiaontology#usedInActivity
@@ -433,7 +442,8 @@ time:Duration rdf:type rdfs:Datatype .
 ###  http://purl.org/aiaontology#verifies
 :verifies rdf:type owl:ObjectProperty ;
           rdfs:domain :Agent ;
-          rdfs:range :Claim .
+          rdfs:range :Claim ;
+          rdfs:comment "FIX: this does not work while Role exists/Auditor etc. is not a subClassOf Agent."@en .
 
 
 #################################################################
@@ -461,7 +471,6 @@ time:Duration rdf:type rdfs:Datatype .
 ###  http://purl.org/aiaontology#hasCodeInRegistry
 :hasCodeInRegistry rdf:type owl:DatatypeProperty ;
                    rdfs:domain :ActivityClass ,
-                               :Indicator ,
                                :Parameter ;
                    rdfs:range xsd:string .
 
@@ -486,8 +495,7 @@ time:Duration rdf:type rdfs:Datatype .
 
 ###  http://purl.org/aiaontology#hasDefinition
 :hasDefinition rdf:type owl:DatatypeProperty ;
-               rdfs:domain :Indicator ,
-                           :Parameter ;
+               rdfs:domain :Parameter ;
                rdfs:range xsd:string .
 
 
@@ -552,16 +560,14 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
 ###  http://purl.org/aiaontology#hasPrecision
 :hasPrecision rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Indicator ,
-                          :MeasurementInstrument ,
+              rdfs:domain :MeasurementInstrument ,
                           :Parameter ;
               rdfs:range xsd:float .
 
 
 ###  http://purl.org/aiaontology#hasRationale
 :hasRationale rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Indicator ,
-                          :Parameter ;
+              rdfs:domain :Parameter ;
               rdfs:range xsd:string .
 
 
@@ -575,7 +581,6 @@ is equivalent to the condition (Control) that Activity B only commence after the
 ###  http://purl.org/aiaontology#hasRegistry
 :hasRegistry rdf:type owl:DatatypeProperty ;
              rdfs:domain :ActivityClass ,
-                         :Indicator ,
                          :Instrument ,
                          :Parameter ;
              rdfs:range xsd:string .
@@ -583,8 +588,7 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
 ###  http://purl.org/aiaontology#hasRegistryVersion
 :hasRegistryVersion rdf:type owl:DatatypeProperty ;
-                    rdfs:domain :Indicator ,
-                                :Instrument ,
+                    rdfs:domain :Instrument ,
                                 :Parameter ;
                     rdfs:range xsd:string .
 
@@ -609,8 +613,7 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
 ###  http://purl.org/aiaontology#hasUnitOfMeasure
 :hasUnitOfMeasure rdf:type owl:DatatypeProperty ;
-                  rdfs:domain :Indicator ,
-                              :Parameter ;
+                  rdfs:domain :Parameter ;
                   rdfs:range rdf:PlainLiteral .
 
 
@@ -713,7 +716,7 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.org/aiaontology#Agent
 :Agent rdf:type owl:Class ;
-       owl:equivalentClass dct:AgentClass ,
+       owl:equivalentClass <http://purl.org/dc/terms/AgentClass> ,
                            prov:Agent ,
                            <http://www.wikidata.org/wiki/Q215627> ;
        rdfs:comment "\"An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.\" (http://www.w3.org/ns/prov#Agent)"@en ;
@@ -728,22 +731,36 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.org/aiaontology#Auditor
 :Auditor rdf:type owl:Class ;
-         owl:equivalentClass [ rdf:type owl:Restriction ;
-                               owl:onProperty :isVerifierOf ;
-                               owl:someValuesFrom :Claim
+         owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :compliesWithRequirements ;
+                                                      owl:someValuesFrom :Control
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :isVerifierOf ;
+                                                      owl:someValuesFrom :Claim
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
                              ] ;
-         rdfs:subClassOf :Role ;
+         rdfs:subClassOf :Verifier ;
          rdfs:comment "\"[A] person who conducts an audit.\" (OED, Google)"@en ,
                       "FIX: auditor vs verifier"@en .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Auditor ;
    owl:annotatedProperty owl:equivalentClass ;
-   owl:annotatedTarget [ rdf:type owl:Restriction ;
-                         owl:onProperty :isVerifierOf ;
-                         owl:someValuesFrom :Claim
+   owl:annotatedTarget [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                owl:onProperty :compliesWithRequirements ;
+                                                owl:someValuesFrom :Control
+                                              ]
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :isVerifierOf ;
+                                                owl:someValuesFrom :Claim
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
                        ] ;
-   rdfs:comment "The requirement for an Agent to fulfill the Role of Auditor is that they verify some Claim"@en
+   rdfs:comment "The requirement for an Agent to fulfill the Role of Auditor is that they verify some Claim AND complies with the (legal) Controls for being an Auditor"@en
  ] .
 
 
@@ -807,7 +824,7 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 ###  http://purl.org/aiaontology#Control
 :Control rdf:type owl:Class ;
          rdfs:comment "A Control may comprise other Controls, e.g. a methodology (a Control) defines many conditions to be met (themselves Controls). Use the 'comprises' property to indicate this."@en ,
-                      "EDIT Control include Procedures, Plans, Processes, Conditions, standards, and Constraints."@en ,
+                      "EDIT Procedures, plans, objectives/goals, processes, requirements, specifications, standards are all Controls"@en ,
                       "NOT FINAL: A Control limits or directs a thing"@en .
 
 
@@ -840,7 +857,7 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.org/aiaontology#Event
 :Event rdf:type owl:Class ;
-       owl:equivalentClass dcmitype:Event ,
+       owl:equivalentClass <http://purl.org/dc/dcmitype/Event> ,
                            prov:InstantaneousEvent ;
        rdfs:comment "\"[A] thing that happens or takes place,...\" (OED, Google)"@en ,
                     "EDIT: A change in the environment that is not brought about the willful act of an agent."@en ;
@@ -941,20 +958,6 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
  ] .
 
 
-###  http://purl.org/aiaontology#IndicVal
-:IndicVal rdf:type owl:Class ;
-          rdfs:comment "FIX: should this, like ParVal, be replaced by State?"@en ;
-          rdfs:label "IndicVal"@en .
-
-
-###  http://purl.org/aiaontology#Indicator
-:Indicator rdf:type owl:Class ;
-           rdfs:comment """NOT FINAL \"[A] thing that indicates the state or level of something.\" (OED, Google)
-
-The difference between an Indicator and a Parameter depends on what the State is that you are interested in. In scenario Y, some Parameters of scenario X are just Indicators. (FIX)"""@en ;
-           rdfs:label "Indicator"@en .
-
-
 ###  http://purl.org/aiaontology#Input
 :Input rdf:type owl:Class ;
        owl:disjointWith :Instrument ,
@@ -984,43 +987,10 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
 
 ###  http://purl.org/aiaontology#Location
 :Location rdf:type owl:Class ;
-          owl:equivalentClass dct:Location ;
-          rdfs:subClassOf [ rdf:type owl:Class ;
-                            owl:unionOf ( [ rdf:type owl:Class ;
-                                            owl:complementOf [ rdf:type owl:Restriction ;
-                                                               owl:onProperty :hasCRS ;
-                                                               owl:hasValue :GPS
-                                                             ]
-                                          ]
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty :hasType ;
-                                            owl:allValuesFrom :Point
-                                          ]
-                                        )
-                          ] ;
+          owl:equivalentClass <http://purl.org/dc/terms/Location> ;
           rdfs:comment "An entity of type Location can be a Point, Line, Path, Polygon, or Volume. A point has a x and y (and optional z) coordinate. If no z coordinate is specified, sea level is assumed. A line comprises exactly two points. A path is two or more continuous lines. A polygon is the area enclosed by three or more points. A volume is the area enclosed by four or more polygons where each edge is shared by exactly two polygons. Length can be derived from a given Line, area from a given Polygon, and volume from a given Volume."@en ,
                        "EDIT"@en ;
           rdfs:label "Location"@en .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource :Location ;
-   owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget [ rdf:type owl:Class ;
-                         owl:unionOf ( [ rdf:type owl:Class ;
-                                         owl:complementOf [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :hasCRS ;
-                                                            owl:hasValue :GPS
-                                                          ]
-                                       ]
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasType ;
-                                         owl:allValuesFrom :Point
-                                       ]
-                                     )
-                       ] ;
-   rdfs:comment """'not (hasCRS value W3W) or (hasType only Point)' is mathematically equivalent to 'If the CRS is GPS, the corresponding Location type is a Point'
-This is an example restriction for this specific CRS; many more may be defined in implementation."""@en
- ] .
 
 
 ###  http://purl.org/aiaontology#Measure
@@ -1100,7 +1070,7 @@ This is an example restriction for this specific CRS; many more may be defined i
 
 ###  http://purl.org/aiaontology#Period
 :Period rdf:type owl:Class ;
-        owl:equivalentClass dct:PeriodOfTime ,
+        owl:equivalentClass <http://purl.org/dc/terms/PeriodOfTime> ,
                             time:Interval ;
         rdfs:comment """Activity, Project, and Event are in the domain of hasPeriod; the range is Period.
 Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDuration predicates."""@en ,
@@ -1139,14 +1109,14 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 :Resource rdf:type owl:Class ;
           rdfs:comment "NOT FINAL \"[A] stock or supply of money, materials, staff, and other assets that can be drawn on by a person or organization in order to function effectively.\" (OED, Google)"@en ;
           rdfs:label "Resource"@en ;
-          skos:narrower dcmitype:InteractiveResource ,
-                        dct:PhysicalResource .
+          skos:narrower <http://purl.org/dc/dcmitype/InteractiveResource> ,
+                        <http://purl.org/dc/terms/PhysicalResource> .
 
 
 ###  http://purl.org/aiaontology#Role
 :Role rdf:type owl:Class ;
       owl:equivalentClass prov:Role ;
-      rdfs:comment "FIX: subclass of Agent (for makesClaim and verifies properties)"@en ,
+      rdfs:comment "FIX: subClassOf Agent?"@en ,
                    "NOT FINAL \"[T]he function assumed or part played by a person or thing in a particular situation.\" (OED, Google)"@en ;
       rdfs:label "Role"@en ;
       rdfs:seeAlso <http://www.ebi.ac.uk/chebi/chebiOntology.do?chebiId=CHEBI:50906> .
@@ -1173,25 +1143,34 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 :Variable rdf:type owl:Class .
 
 
+###  http://purl.org/aiaontology#Verifier
+:Verifier rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :isVerifierOf ;
+                                owl:someValuesFrom :Claim
+                              ] ;
+          rdfs:subClassOf :Role .
+
+
 ###  http://purl.org/aiaontology#Volume
 :Volume rdf:type owl:Class ;
         rdfs:subClassOf :Location .
 
 
 ###  http://purl.org/dc/dcmitype/Event
-dcmitype:Event rdf:type owl:Class .
+<http://purl.org/dc/dcmitype/Event> rdf:type owl:Class .
 
 
 ###  http://purl.org/dc/terms/AgentClass
-dct:AgentClass rdf:type owl:Class .
+<http://purl.org/dc/terms/AgentClass> rdf:type owl:Class .
 
 
 ###  http://purl.org/dc/terms/Location
-dct:Location rdf:type owl:Class .
+<http://purl.org/dc/terms/Location> rdf:type owl:Class .
 
 
 ###  http://purl.org/dc/terms/PeriodOfTime
-dct:PeriodOfTime rdf:type owl:Class .
+<http://purl.org/dc/terms/PeriodOfTime> rdf:type owl:Class .
 
 
 ###  http://www.w3.org/2002/07/owl#Thing
@@ -1227,10 +1206,6 @@ prov:InstantaneousEvent rdf:type owl:Class .
 
 ###  http://www.w3.org/ns/prov#Role
 prov:Role rdf:type owl:Class .
-
-
-###  http://www.w3.org/ns/prov#Entity
-prov:Entity rdf:type owl:Class .
 
 
 ###  http://www.wikidata.org/wiki/Q154954
@@ -1292,6 +1267,7 @@ i.e. if the statements on the left/right are true, those on the right/left are a
   owl:annotatedTarget :StateDiff ;
   rdfs:comment "Two different States of the same Environment (asserted by using isStateDiffFrom) is an StateDiff entity."@en
 ] .
+
 
 [ rdf:type owl:Axiom ;
   owl:annotatedSource [ rdf:type owl:Restriction ;
