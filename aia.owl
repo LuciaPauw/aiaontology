@@ -64,10 +64,6 @@ xsd:date rdf:type rdfs:Datatype ;
          owl:equivalentClass <http://purl.org/dc/terms/date> .
 
 
-###  http://www.w3.org/2006/time#Duration
-time:Duration rdf:type rdfs:Datatype .
-
-
 #################################################################
 #    Object Properties
 #################################################################
@@ -101,8 +97,8 @@ time:Duration rdf:type rdfs:Datatype .
 ###  http://purl.org/aiaontology#defines
 :defines rdf:type owl:ObjectProperty ;
          owl:inverseOf :isDefinedBy ;
-         rdfs:domain :Parameter ;
-         rdfs:range :Environment .
+         rdfs:range :Environment ;
+         rdfs:comment "A collection of Parameters defines an Environment."@en .
 
 
 ###  http://purl.org/aiaontology#forParameter
@@ -159,6 +155,12 @@ time:Duration rdf:type rdfs:Datatype .
 ###  http://purl.org/aiaontology#hasControl
 :hasControl rdf:type owl:ObjectProperty ;
             rdfs:range :Control .
+
+
+###  http://purl.org/aiaontology#hasDuration
+:hasDuration rdf:type owl:ObjectProperty ;
+             rdfs:domain :Period ;
+             rdfs:range time:Duration .
 
 
 ###  http://purl.org/aiaontology#hasEnvironment
@@ -671,8 +673,7 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
 ###  http://www.w3.org/2006/time#hasDuration
 time:hasDuration rdf:type owl:DatatypeProperty ;
-                 rdfs:domain :Period ;
-                 rdfs:range time:Duration .
+                 rdfs:domain :Period .
 
 
 ###  http://www.w3.org/ns/prov#endedAtTime
@@ -716,9 +717,11 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.org/aiaontology#Agent
 :Agent rdf:type owl:Class ;
-       owl:equivalentClass <http://purl.org/dc/terms/AgentClass> ,
-                           prov:Agent ,
-                           <http://www.wikidata.org/wiki/Q215627> ;
+       rdfs:subClassOf [ rdf:type owl:Class ;
+                         owl:unionOf ( :LegalPerson
+                                       :NaturalPerson
+                                     )
+                       ] ;
        rdfs:comment "\"An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.\" (http://www.w3.org/ns/prov#Agent)"@en ;
        rdfs:label "Agent"@en .
 
@@ -976,8 +979,7 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
 
 ###  http://purl.org/aiaontology#LegalPerson
 :LegalPerson rdf:type owl:Class ;
-             owl:equivalentClass <http://www.wikidata.org/wiki/Q3778211> ;
-             rdfs:subClassOf :Agent .
+             owl:equivalentClass <http://www.wikidata.org/wiki/Q3778211> .
 
 
 ###  http://purl.org/aiaontology#Line
@@ -1006,8 +1008,7 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
 
 ###  http://purl.org/aiaontology#NaturalPerson
 :NaturalPerson rdf:type owl:Class ;
-               owl:equivalentClass <http://www.wikidata.org/wiki/Q154954> ;
-               rdfs:subClassOf :Agent .
+               owl:equivalentClass <http://www.wikidata.org/wiki/Q154954> .
 
 
 ###  http://purl.org/aiaontology#Operator
@@ -1124,9 +1125,9 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
 ###  http://purl.org/aiaontology#State
 :State rdf:type owl:Class ;
-       rdfs:comment "NOT FINAL A State is the value of a parameter P at time t."@en ;
-       rdfs:label "FIX: for two States to belong to the same Environment, they need to be defined for the same Parameter/s."@en ,
-                  "State"@en .
+       rdfs:comment "NOT FINAL A State is the value of a parameter P at time t."@en ,
+                    "The State of an Environment comprises the collection of the States (i.e. the values) of that Environment's defining parameters."@en ;
+       rdfs:label "State"@en .
 
 
 ###  http://purl.org/aiaontology#StateDiff
@@ -1182,6 +1183,10 @@ owl:Thing rdf:type owl:Class ;
           skos:altLabel "Entity"@en ,
                         "Item"@en ,
                         "Object"@en .
+
+
+###  http://www.w3.org/2006/time#Duration
+time:Duration rdf:type owl:Class .
 
 
 ###  http://www.w3.org/2006/time#Interval
@@ -1254,6 +1259,38 @@ prov:Role rdf:type owl:Class .
                       ] ;
   rdfs:comment """(Auditor makesClaim Claim1) ^ (Claim1 regardsVeracity Claim2) iff (Auditor verifies Claim2);
 i.e. if the statements on the left/right are true, those on the right/left are as well."""@en
+] .
+
+
+[ rdf:type owl:Axiom ;
+  owl:annotatedSource [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasDuration ;
+                        owl:someValuesFrom time:Duration ;
+                        rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty prov:endedAtTime ;
+                                                                 owl:someValuesFrom xsd:dateTime
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty prov:startedAtTime ;
+                                                                 owl:someValuesFrom xsd:dateTime
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ]
+                      ] ;
+  owl:annotatedProperty rdfs:subClassOf ;
+  owl:annotatedTarget [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                               owl:onProperty prov:endedAtTime ;
+                                               owl:someValuesFrom xsd:dateTime
+                                             ]
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty prov:startedAtTime ;
+                                               owl:someValuesFrom xsd:dateTime
+                                             ]
+                                           ) ;
+                        rdf:type owl:Class
+                      ] ;
+  rdfs:comment "The class of all things that have a duration is a subclass of the set of all things that have a start as well as end time. In other words, everything which has a duration must have started at some time and ended at some time."@en
 ] .
 
 
