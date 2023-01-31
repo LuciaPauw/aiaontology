@@ -712,7 +712,17 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.org/aiaontology#ActivityClass
 :ActivityClass rdf:type owl:Class ;
-               rdfs:comment "USE: First specify the registry from which the activity code should be read (hasRegistry and hasRegistryVersion), the specify the activity code (hasCodeInRegistry). Then an Activity has an ActivityClass, with these properties specified."@en .
+               rdfs:comment """EDIT aia could also have its own registry, hosted online as referenced, for example, as follows:
+
+Name: AIAO Value Determination Activities
+	Version = 1.0.0
+	Contents:
+	Activity    |   Code
+	CALCULATE        1
+	MEASURE	   2
+	SOURCE	   3
+	ESTIMATE	   4"""@en ,
+                            "USE: First specify the registry from which the activity code should be read (hasRegistry and hasRegistryVersion), the specify the activity code (hasCodeInRegistry). Then an Activity has an ActivityClass, with these properties specified."@en .
 
 
 ###  http://purl.org/aiaontology#Agent
