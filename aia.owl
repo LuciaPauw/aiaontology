@@ -129,7 +129,6 @@ xsd:date rdf:type rdfs:Datatype ;
 ###  http://purl.org/aiaontology#hasCRS
 :hasCRS rdf:type owl:ObjectProperty ;
         rdfs:domain :Location ;
-        rdfs:range :CRS ;
         rdfs:comment "EDIT"@en .
 
 
@@ -226,8 +225,7 @@ xsd:date rdf:type rdfs:Datatype ;
 
 ###  http://purl.org/aiaontology#hasPoint
 :hasPoint rdf:type owl:ObjectProperty ;
-          rdfs:domain :Location ;
-          rdfs:range :Point .
+          rdfs:domain :Location .
 
 
 ###  http://purl.org/aiaontology#hasProvenance
@@ -290,7 +288,6 @@ xsd:date rdf:type rdfs:Datatype ;
 
 ###  http://purl.org/aiaontology#impliesType
 :impliesType rdf:type owl:ObjectProperty ;
-             rdfs:domain :CRS ;
              rdfs:range :Location ;
              rdfs:comment "EDIT"@en .
 
@@ -641,19 +638,16 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
 ###  http://purl.org/aiaontology#pointHasAltitude
 :pointHasAltitude rdf:type owl:DatatypeProperty ;
-                  rdfs:domain :Point ;
                   rdfs:range xsd:string .
 
 
 ###  http://purl.org/aiaontology#pointHasLatitude
 :pointHasLatitude rdf:type owl:DatatypeProperty ;
-                  rdfs:domain :Point ;
                   rdfs:range xsd:string .
 
 
 ###  http://purl.org/aiaontology#pointHasLongtitude
 :pointHasLongtitude rdf:type owl:DatatypeProperty ;
-                    rdfs:domain :Point ;
                     rdfs:range xsd:string .
 
 
@@ -704,8 +698,8 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 :Activity rdf:type owl:Class ;
           owl:equivalentClass prov:Activity ;
           owl:disjointWith :Event ;
-          rdfs:comment "An Activity may comprise other Activity/ies, e.g. a project (an Activity) consists of many Activities. Use the 'comprises' property to indicate this."@en ,
-                       "NOT FINAL A thing that an agent does, which impacts an environment."@en ;
+          rdfs:comment "A thing that an agent does, which impacts an environment."@en ,
+                       "An Activity may comprise other Activity/ies, e.g. a project (an Activity) consists of many Activities. Use the 'comprises' property to indicate this."@en ;
           owl:equivalentClass "FIX: does an Activity, like an ImpactClaim, need to have a value for every predicate for which it is in the domain (see protobufs)"@en ;
           skos:altLabel "Action"@en .
 
@@ -727,19 +721,14 @@ Name: AIAO Value Determination Activities
 
 ###  http://purl.org/aiaontology#Agent
 :Agent rdf:type owl:Class ;
-       rdfs:subClassOf [ rdf:type owl:Class ;
-                         owl:unionOf ( :LegalPerson
-                                       :NaturalPerson
-                                     )
-                       ] ;
        rdfs:comment "\"An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.\" (http://www.w3.org/ns/prov#Agent)"@en ;
-       rdfs:label "Agent"@en .
+       rdfs:label "Agent"@en ;
+       rdfs:seeAlso prov:Agent .
 
 
-###  http://purl.org/aiaontology#Audit
-:Audit rdf:type owl:Class ;
-       rdfs:subClassOf :Activity ;
-       rdfs:comment "EDIT: audit is the act of verifying a claim"@en .
+###  http://purl.org/aiaontology#Area
+:Area rdf:type owl:Class ;
+      rdfs:subClassOf :Extent .
 
 
 ###  http://purl.org/aiaontology#Auditor
@@ -777,10 +766,9 @@ Name: AIAO Value Determination Activities
  ] .
 
 
-###  http://purl.org/aiaontology#CRS
-:CRS rdf:type owl:Class ;
-     rdfs:comment "EDIT"@en ;
-     rdfs:label "Coordinate Reference System"@en .
+###  http://purl.org/aiaontology#Calculate
+:Calculate rdf:type owl:Class ;
+           rdfs:subClassOf :Activity .
 
 
 ###  http://purl.org/aiaontology#Calculation
@@ -806,14 +794,6 @@ Name: AIAO Value Determination Activities
        skos:altLabel "Assertion"@en .
 
 
-###  http://purl.org/aiaontology#ClaimAct
-:ClaimAct rdf:type owl:Class ;
-          rdfs:subClassOf :Activity ;
-          rdfs:comment "The activity of making a statement about a (specific) thing."@en ;
-          rdfs:label "Claim (verb)"@en ;
-          skos:altLabel "Assert"@en .
-
-
 ###  http://purl.org/aiaontology#Claimant
 :Claimant rdf:type owl:Class ;
           owl:equivalentClass [ rdf:type owl:Restriction ;
@@ -832,6 +812,16 @@ Name: AIAO Value Determination Activities
                        ] ;
    rdfs:comment "The requirement for an Agent to fulfill the Role of Claimant is that they make some Claim."@en
  ] .
+
+
+###  http://purl.org/aiaontology#Class
+:Class rdf:type owl:Class ;
+       rdfs:subClassOf :Parameter .
+
+
+###  http://purl.org/aiaontology#ClassificationSystem
+:ClassificationSystem rdf:type owl:Class ;
+                      rdfs:subClassOf :Control .
 
 
 ###  http://purl.org/aiaontology#Control
@@ -864,7 +854,7 @@ Name: AIAO Value Determination Activities
 
 ###  http://purl.org/aiaontology#Environment
 :Environment rdf:type owl:Class ;
-             rdfs:comment "NOT FINAL The surroundings and conditions in which a thing exists."@en ;
+             rdfs:comment "(PROPOSED) The surroundings and conditions in which a thing exists."@en ;
              rdfs:label "Environment"@en .
 
 
@@ -886,8 +876,24 @@ Name: AIAO Value Determination Activities
 :ExpressionSymbol rdf:type owl:Class .
 
 
+###  http://purl.org/aiaontology#Extent
+:Extent rdf:type owl:Class ;
+        rdfs:subClassOf :SpatialParameter .
+
+
 ###  http://purl.org/aiaontology#Formula
-:Formula rdf:type owl:Class .
+:Formula rdf:type owl:Class ;
+         rdfs:subClassOf :Control .
+
+
+###  http://purl.org/aiaontology#GeocentricDatum
+:GeocentricDatum rdf:type owl:Class ;
+                 rdfs:subClassOf :SpatialReferenceSystem .
+
+
+###  http://purl.org/aiaontology#GeodeticDatum
+:GeodeticDatum rdf:type owl:Class ;
+               rdfs:subClassOf :SpatialReferenceSystem .
 
 
 ###  http://purl.org/aiaontology#IPP
@@ -895,6 +901,11 @@ Name: AIAO Value Determination Activities
      rdfs:comment "FIX according to DPSEEA model"@en ;
      rdfs:label "Impact Pathway Position (according to DPSEEA model)"@en ;
      rdfs:seeAlso <https://archive.epa.gov/ged/tutorial/web/html/slide0004-4.html> .
+
+
+###  http://purl.org/aiaontology#IdentityClaim
+:IdentityClaim rdf:type owl:Class ;
+               rdfs:subClassOf :Claim .
 
 
 ###  http://purl.org/aiaontology#ImpactClaim
@@ -979,6 +990,11 @@ Name: AIAO Value Determination Activities
        rdfs:label "Input"@en .
 
 
+###  http://purl.org/aiaontology#Instant
+:Instant rdf:type owl:Class ;
+         rdfs:subClassOf :TemporalParameter .
+
+
 ###  http://purl.org/aiaontology#Instrument
 :Instrument rdf:type owl:Class ;
             rdfs:comment """EDIT An instrument is used by an agent to perform an Activity.
@@ -989,17 +1005,19 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
 
 ###  http://purl.org/aiaontology#LegalPerson
 :LegalPerson rdf:type owl:Class ;
-             owl:equivalentClass <http://www.wikidata.org/wiki/Q3778211> .
+             owl:equivalentClass <http://www.wikidata.org/wiki/Q3778211> ;
+             rdfs:subClassOf :Agent .
 
 
 ###  http://purl.org/aiaontology#Line
 :Line rdf:type owl:Class ;
-      rdfs:subClassOf :Location .
+      rdfs:subClassOf :Extent .
 
 
 ###  http://purl.org/aiaontology#Location
 :Location rdf:type owl:Class ;
           owl:equivalentClass <http://purl.org/dc/terms/Location> ;
+          rdfs:subClassOf :SpatialParameter ;
           rdfs:comment "An entity of type Location can be a Point, Line, Path, Polygon, or Volume. A point has a x and y (and optional z) coordinate. If no z coordinate is specified, sea level is assumed. A line comprises exactly two points. A path is two or more continuous lines. A polygon is the area enclosed by three or more points. A volume is the area enclosed by four or more polygons where each edge is shared by exactly two polygons. Length can be derived from a given Line, area from a given Polygon, and volume from a given Volume."@en ,
                        "EDIT"@en ;
           rdfs:label "Location"@en .
@@ -1016,9 +1034,20 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
                        rdfs:subClassOf :Instrument .
 
 
+###  http://purl.org/aiaontology#MeasurementSystem
+:MeasurementSystem rdf:type owl:Class ;
+                   rdfs:subClassOf :Control .
+
+
+###  http://purl.org/aiaontology#Move
+:Move rdf:type owl:Class ;
+      rdfs:subClassOf :Activity .
+
+
 ###  http://purl.org/aiaontology#NaturalPerson
 :NaturalPerson rdf:type owl:Class ;
-               owl:equivalentClass <http://www.wikidata.org/wiki/Q154954> .
+               owl:equivalentClass <http://www.wikidata.org/wiki/Q154954> ;
+               rdfs:subClassOf :Agent .
 
 
 ###  http://purl.org/aiaontology#Operator
@@ -1074,34 +1103,25 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
            skos:altLabel "Attribute"@en .
 
 
-###  http://purl.org/aiaontology#Path
-:Path rdf:type owl:Class ;
-      rdfs:subClassOf :Location .
-
-
 ###  http://purl.org/aiaontology#Period
 :Period rdf:type owl:Class ;
         owl:equivalentClass <http://purl.org/dc/terms/PeriodOfTime> ,
                             time:Interval ;
+        rdfs:subClassOf :TemporalParameter ;
         rdfs:comment """Activity, Project, and Event are in the domain of hasPeriod; the range is Period.
 Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDuration predicates."""@en ,
                      "EDIT"@en ;
         rdfs:label "Period"@en .
 
 
-###  http://purl.org/aiaontology#Point
-:Point rdf:type owl:Class ;
-       rdfs:subClassOf :Location .
-
-
-###  http://purl.org/aiaontology#Polygon
-:Polygon rdf:type owl:Class ;
-         rdfs:subClassOf :Location .
-
-
 ###  http://purl.org/aiaontology#PressureIPP
 :PressureIPP rdf:type owl:Class ;
              rdfs:subClassOf :IPP .
+
+
+###  http://purl.org/aiaontology#Produce
+:Produce rdf:type owl:Class ;
+         rdfs:subClassOf :Activity .
 
 
 ###  http://purl.org/aiaontology#ProjectPeriod
@@ -1133,6 +1153,16 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
       rdfs:seeAlso <http://www.ebi.ac.uk/chebi/chebiOntology.do?chebiId=CHEBI:50906> .
 
 
+###  http://purl.org/aiaontology#SpatialParameter
+:SpatialParameter rdf:type owl:Class ;
+                  rdfs:subClassOf :Parameter .
+
+
+###  http://purl.org/aiaontology#SpatialReferenceSystem
+:SpatialReferenceSystem rdf:type owl:Class ;
+                        rdfs:subClassOf :MeasurementSystem .
+
+
 ###  http://purl.org/aiaontology#State
 :State rdf:type owl:Class ;
        rdfs:comment "NOT FINAL A State is the value of a parameter P at time t."@en ,
@@ -1148,6 +1178,16 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 ###  http://purl.org/aiaontology#StateIPP
 :StateIPP rdf:type owl:Class ;
           rdfs:subClassOf :IPP .
+
+
+###  http://purl.org/aiaontology#TemporalParameter
+:TemporalParameter rdf:type owl:Class ;
+                   rdfs:subClassOf :Parameter .
+
+
+###  http://purl.org/aiaontology#TemporalReferenceSystem
+:TemporalReferenceSystem rdf:type owl:Class ;
+                         rdfs:subClassOf :MeasurementSystem .
 
 
 ###  http://purl.org/aiaontology#Variable
@@ -1173,9 +1213,28 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
  ] .
 
 
+###  http://purl.org/aiaontology#Verify
+:Verify rdf:type owl:Class ;
+        rdfs:subClassOf :Activity .
+
+
 ###  http://purl.org/aiaontology#Volume
 :Volume rdf:type owl:Class ;
-        rdfs:subClassOf :Location .
+        rdfs:subClassOf :Extent .
+
+
+###  http://purl.org/aiaontology#Audit(v)
+<http://purl.org/aiaontology#Audit(v)> rdf:type owl:Class ;
+                                       rdfs:subClassOf :Verify ;
+                                       rdfs:comment "(PROPOSED) The activity of making sure or demonstrating that something is true, accurate, or justified."@en .
+
+
+###  http://purl.org/aiaontology#Claim(v)
+<http://purl.org/aiaontology#Claim(v)> rdf:type owl:Class ;
+                                       rdfs:subClassOf :Activity ;
+                                       rdfs:comment "The activity of making a statement about a (specific) thing."@en ;
+                                       rdfs:label "Claim (verb)"@en ;
+                                       skos:altLabel "Assert"@en .
 
 
 ###  http://purl.org/dc/dcmitype/Event
@@ -1206,11 +1265,13 @@ owl:Thing rdf:type owl:Class ;
 
 
 ###  http://www.w3.org/2006/time#Duration
-time:Duration rdf:type owl:Class .
+time:Duration rdf:type owl:Class ;
+              rdfs:subClassOf :TemporalParameter .
 
 
 ###  http://www.w3.org/2006/time#Interval
-time:Interval rdf:type owl:Class .
+time:Interval rdf:type owl:Class ;
+              rdfs:subClassOf :TemporalParameter .
 
 
 ###  http://www.w3.org/ns/prov#Activity
@@ -1250,8 +1311,7 @@ prov:Role rdf:type owl:Class .
 #################################################################
 
 ###  http://purl.org/aiaontology#GPS
-:GPS rdf:type owl:NamedIndividual ,
-              :CRS ;
+:GPS rdf:type owl:NamedIndividual ;
      rdfs:comment "This is but one example of a CRS (Coordinate Reference System) - there are many more that may be defined in implementation"@en .
 
 
@@ -1323,24 +1383,6 @@ i.e. if the statements on the left/right are true, those on the right/left are a
   owl:annotatedProperty rdfs:subClassOf ;
   owl:annotatedTarget :StateDiff ;
   rdfs:comment "Two different States of the same Environment (asserted by using isStateDiffFrom) is an StateDiff entity."@en
-] .
-
-
-[ rdf:type owl:Axiom ;
-  owl:annotatedSource [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasCRS ;
-                        owl:hasValue :GPS ;
-                        rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                          owl:onProperty :hasType ;
-                                          owl:someValuesFrom :Point
-                                        ]
-                      ] ;
-  owl:annotatedProperty rdfs:subClassOf ;
-  owl:annotatedTarget [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasType ;
-                        owl:someValuesFrom :Point
-                      ] ;
-  rdfs:comment "This is just an example of a specific CRS corresponding to a specific Location Type (Point, Line, Path, Polygon, Volume). Many more may be added."@en
 ] .
 
 
