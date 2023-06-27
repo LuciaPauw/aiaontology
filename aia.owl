@@ -101,6 +101,20 @@ xsd:date rdf:type rdfs:Datatype ;
          rdfs:comment "A collection of Parameters defines an Environment."@en .
 
 
+###  http://purl.org/aiaontology#enacts
+:enacts rdf:type owl:ObjectProperty ;
+        owl:inverseOf :isEnactedBy ;
+        rdfs:domain :Agent ;
+        rdfs:range :Role .
+
+
+###  http://purl.org/aiaontology#engagesIn
+:engagesIn rdf:type owl:ObjectProperty ;
+           owl:inverseOf :isPerformedBy ;
+           rdfs:domain :Agent ;
+           rdfs:range :Activity .
+
+
 ###  http://purl.org/aiaontology#forParameter
 :forParameter rdf:type owl:ObjectProperty ;
               rdfs:domain :ExpressionSymbol ;
@@ -140,7 +154,7 @@ xsd:date rdf:type rdfs:Datatype ;
 ###  http://purl.org/aiaontology#hasClaimant
 :hasClaimant rdf:type owl:ObjectProperty ;
              owl:inverseOf :makesClaim ;
-             rdfs:domain :Claim ;
+             rdfs:domain <http://purl.org/aiaontology#Claim(n)> ;
              rdfs:range :Agent .
 
 
@@ -298,6 +312,12 @@ xsd:date rdf:type rdfs:Datatype ;
              rdfs:range :Parameter .
 
 
+###  http://purl.org/aiaontology#isEnactedBy
+:isEnactedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain :Role ;
+             rdfs:range :Agent .
+
+
 ###  http://purl.org/aiaontology#isImpactedBy
 :isImpactedBy rdf:type owl:ObjectProperty ;
               rdfs:domain :Environment ;
@@ -335,16 +355,8 @@ xsd:date rdf:type rdfs:Datatype ;
 
 ###  http://purl.org/aiaontology#isPerformedBy
 :isPerformedBy rdf:type owl:ObjectProperty ;
-               owl:inverseOf :performs ;
                rdfs:domain :Activity ;
                rdfs:range :Agent .
-
-
-###  http://purl.org/aiaontology#isPerformedWith
-:isPerformedWith rdf:type owl:ObjectProperty ;
-                 owl:inverseOf :usedToPerform ;
-                 rdfs:domain :Activity ;
-                 rdfs:range :Instrument .
 
 
 ###  http://purl.org/aiaontology#isStateDiffFrom
@@ -353,17 +365,23 @@ xsd:date rdf:type rdfs:Datatype ;
                  rdfs:range :State .
 
 
+###  http://purl.org/aiaontology#isStatementAbout
+:isStatementAbout rdf:type owl:ObjectProperty ;
+                  rdfs:domain <http://purl.org/aiaontology#Claim(n)> ;
+                  rdfs:range owl:Thing .
+
+
 ###  http://purl.org/aiaontology#isVerifiedBy
 :isVerifiedBy rdf:type owl:ObjectProperty ;
               owl:inverseOf :isVerifierOf ;
-              rdfs:domain :Claim ;
+              rdfs:domain <http://purl.org/aiaontology#Claim(n)> ;
               rdfs:range :Auditor .
 
 
 ###  http://purl.org/aiaontology#isVerifierOf
 :isVerifierOf rdf:type owl:ObjectProperty ;
               rdfs:domain :Auditor ;
-              rdfs:range :Claim .
+              rdfs:range <http://purl.org/aiaontology#Claim(n)> .
 
 
 ###  http://purl.org/aiaontology#limitsOrDirects
@@ -376,7 +394,7 @@ xsd:date rdf:type rdfs:Datatype ;
 ###  http://purl.org/aiaontology#makesClaim
 :makesClaim rdf:type owl:ObjectProperty ;
             rdfs:domain :Agent ;
-            rdfs:range :Claim ;
+            rdfs:range <http://purl.org/aiaontology#Claim(n)> ;
             rdfs:comment "FIX: this does not work while Role exists/Auditor etc. is not a subClassOf Agent."@en .
 
 
@@ -398,16 +416,17 @@ xsd:date rdf:type rdfs:Datatype ;
       rdfs:range owl:Thing .
 
 
-###  http://purl.org/aiaontology#performs
-:performs rdf:type owl:ObjectProperty ;
-          rdfs:domain :Agent ;
-          rdfs:range :Activity .
+###  http://purl.org/aiaontology#performedWith
+:performedWith rdf:type owl:ObjectProperty ;
+               owl:inverseOf :usedToPerform ;
+               rdfs:domain :Activity ;
+               rdfs:range :Instrument .
 
 
 ###  http://purl.org/aiaontology#regardsVeracity
 :regardsVeracity rdf:type owl:ObjectProperty ;
-                 rdfs:domain :Claim ;
-                 rdfs:range :Claim ;
+                 rdfs:domain <http://purl.org/aiaontology#Claim(n)> ;
+                 rdfs:range <http://purl.org/aiaontology#Claim(n)> ;
                  rdfs:comment "FIX: this does not work while Role exists/Auditor etc. is not a subClassOf Agent."@en .
 
 
@@ -441,7 +460,7 @@ xsd:date rdf:type rdfs:Datatype ;
 ###  http://purl.org/aiaontology#verifies
 :verifies rdf:type owl:ObjectProperty ;
           rdfs:domain :Agent ;
-          rdfs:range :Claim ;
+          rdfs:range <http://purl.org/aiaontology#Claim(n)> ;
           rdfs:comment "FIX: this does not work while Role exists/Auditor etc. is not a subClassOf Agent."@en .
 
 
@@ -696,12 +715,56 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
 
 ###  http://purl.org/aiaontology#Activity
 :Activity rdf:type owl:Class ;
-          owl:equivalentClass prov:Activity ;
+          owl:equivalentClass prov:Activity ,
+                              [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasInput ;
+                                                       owl:someValuesFrom owl:Thing
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasOutput ;
+                                                       owl:someValuesFrom owl:Thing
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :isPerformedBy ;
+                                                       owl:someValuesFrom :Agent
+                                                     ]
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :performedWith ;
+                                                       owl:someValuesFrom :Instrument
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
           owl:disjointWith :Event ;
           rdfs:comment "A thing that an agent does, which impacts an environment."@en ,
                        "An Activity may comprise other Activity/ies, e.g. a project (an Activity) consists of many Activities. Use the 'comprises' property to indicate this."@en ;
           owl:equivalentClass "FIX: does an Activity, like an ImpactClaim, need to have a value for every predicate for which it is in the domain (see protobufs)"@en ;
           skos:altLabel "Action"@en .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :Activity ;
+   owl:annotatedProperty owl:equivalentClass ;
+   owl:annotatedTarget [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                owl:onProperty :hasInput ;
+                                                owl:someValuesFrom owl:Thing
+                                              ]
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :hasOutput ;
+                                                owl:someValuesFrom owl:Thing
+                                              ]
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :isPerformedBy ;
+                                                owl:someValuesFrom :Agent
+                                              ]
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :performedWith ;
+                                                owl:someValuesFrom :Instrument
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                       ] ;
+   rdfs:comment "EDIT These four axioms define an activity. A valid activity requires specification of an agent, instrument, input, and output."@en
+ ] .
 
 
 ###  http://purl.org/aiaontology#ActivityClass
@@ -722,8 +785,8 @@ Name: AIAO Value Determination Activities
 ###  http://purl.org/aiaontology#Agent
 :Agent rdf:type owl:Class ;
        rdfs:comment "\"An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.\" (http://www.w3.org/ns/prov#Agent)"@en ;
-       rdfs:label "Agent"@en ;
-       rdfs:seeAlso prov:Agent .
+       rdfs:isDefinedBy prov:Agent ;
+       rdfs:label "Agent"@en .
 
 
 ###  http://purl.org/aiaontology#Area
@@ -739,14 +802,13 @@ Name: AIAO Value Determination Activities
                                                     ]
                                                     [ rdf:type owl:Restriction ;
                                                       owl:onProperty :isVerifierOf ;
-                                                      owl:someValuesFrom :Claim
+                                                      owl:someValuesFrom <http://purl.org/aiaontology#Claim(n)>
                                                     ]
                                                   ) ;
                                rdf:type owl:Class
                              ] ;
          rdfs:subClassOf :Verifier ;
-         rdfs:comment "\"[A] person who conducts an audit.\" (OED, Google)"@en ,
-                      "FIX: auditor vs verifier"@en .
+         rdfs:comment "An agent certified to conduct an audit."@en .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Auditor ;
@@ -757,7 +819,7 @@ Name: AIAO Value Determination Activities
                                               ]
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty :isVerifierOf ;
-                                                owl:someValuesFrom :Claim
+                                                owl:someValuesFrom <http://purl.org/aiaontology#Claim(n)>
                                               ]
                                             ) ;
                          rdf:type owl:Class
@@ -782,23 +844,15 @@ Name: AIAO Value Determination Activities
                                   owl:onProperty :calibrates ;
                                   owl:someValuesFrom :MeasurementInstrument
                                 ] ;
-            rdfs:subClassOf :Role .
-
-
-###  http://purl.org/aiaontology#Claim
-:Claim rdf:type owl:Class ;
-       rdfs:comment "A claim is a statement about a (some specific) thing."@en ;
-       rdfs:label "A Claim may comprise other Claim/s, e.g. a report (a Claim) consists of many Claims. Use the 'comprises' property to indicate this."@en ,
-                  "Claim (noun)"@en ;
-       rdfs:seeAlso <https://www.w3.org/2003/glossary/keyword/All/assertion.html?keywords=assertion> ;
-       skos:altLabel "Assertion"@en .
+            rdfs:subClassOf :Role ;
+            rdfs:comment "FIX add definition"@en .
 
 
 ###  http://purl.org/aiaontology#Claimant
 :Claimant rdf:type owl:Class ;
           owl:equivalentClass [ rdf:type owl:Restriction ;
                                 owl:onProperty :makesClaim ;
-                                owl:someValuesFrom :Claim
+                                owl:someValuesFrom <http://purl.org/aiaontology#Claim(n)>
                               ] ;
           rdfs:subClassOf :Role ;
           rdfs:comment "NOT FINAL [A] person making a claim, especially in a lawsuit or for a state benefit.\" (OED, Google)"@en .
@@ -808,7 +862,7 @@ Name: AIAO Value Determination Activities
    owl:annotatedProperty owl:equivalentClass ;
    owl:annotatedTarget [ rdf:type owl:Restriction ;
                          owl:onProperty :makesClaim ;
-                         owl:someValuesFrom :Claim
+                         owl:someValuesFrom <http://purl.org/aiaontology#Claim(n)>
                        ] ;
    rdfs:comment "The requirement for an Agent to fulfill the Role of Claimant is that they make some Claim."@en
  ] .
@@ -816,7 +870,8 @@ Name: AIAO Value Determination Activities
 
 ###  http://purl.org/aiaontology#Class
 :Class rdf:type owl:Class ;
-       rdfs:subClassOf :Parameter .
+       rdfs:subClassOf :Parameter ;
+       rdfs:comment "FIX: add definition"@en .
 
 
 ###  http://purl.org/aiaontology#ClassificationSystem
@@ -905,7 +960,7 @@ Name: AIAO Value Determination Activities
 
 ###  http://purl.org/aiaontology#IdentityClaim
 :IdentityClaim rdf:type owl:Class ;
-               rdfs:subClassOf :Claim .
+               rdfs:subClassOf <http://purl.org/aiaontology#Claim(n)> .
 
 
 ###  http://purl.org/aiaontology#ImpactClaim
@@ -941,7 +996,7 @@ Name: AIAO Value Determination Activities
                                                       ) ;
                                    rdf:type owl:Class
                                  ] ;
-             rdfs:subClassOf :Claim ;
+             rdfs:subClassOf <http://purl.org/aiaontology#Claim(n)> ;
              rdfs:label "Impact claim"@en .
 
 [ rdf:type owl:Axiom ;
@@ -1036,7 +1091,8 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
 
 ###  http://purl.org/aiaontology#MeasurementSystem
 :MeasurementSystem rdf:type owl:Class ;
-                   rdfs:subClassOf :Control .
+                   rdfs:subClassOf :Control ;
+                   rdfs:comment "NOT FINAL: A measurement system controls the expression of the state of a parameter."@en .
 
 
 ###  http://purl.org/aiaontology#Move
@@ -1110,7 +1166,8 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
         rdfs:subClassOf :TemporalParameter ;
         rdfs:comment """Activity, Project, and Event are in the domain of hasPeriod; the range is Period.
 Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDuration predicates."""@en ,
-                     "EDIT"@en ;
+                     "EDIT"@en ,
+                     "NEEDED?"@en ;
         rdfs:label "Period"@en .
 
 
@@ -1147,8 +1204,7 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 ###  http://purl.org/aiaontology#Role
 :Role rdf:type owl:Class ;
       owl:equivalentClass prov:Role ;
-      rdfs:comment "FIX: subClassOf Agent?"@en ,
-                   "NOT FINAL \"[T]he function assumed or part played by a person or thing in a particular situation.\" (OED, Google)"@en ;
+      rdfs:comment "NOT FINAL \"[T]he function assumed or part played by a person or thing in a particular situation.\" (OED, Google)"@en ;
       rdfs:label "Role"@en ;
       rdfs:seeAlso <http://www.ebi.ac.uk/chebi/chebiOntology.do?chebiId=CHEBI:50906> .
 
@@ -1198,16 +1254,17 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 :Verifier rdf:type owl:Class ;
           owl:equivalentClass [ rdf:type owl:Restriction ;
                                 owl:onProperty :isVerifierOf ;
-                                owl:someValuesFrom :Claim
+                                owl:someValuesFrom <http://purl.org/aiaontology#Claim(n)>
                               ] ;
-          rdfs:subClassOf :Role .
+          rdfs:subClassOf :Role ;
+          rdfs:comment "NOT FINAL [S]omeone who vouches for another or for the correctness of a statement. (\"verifier\")"@en .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Verifier ;
    owl:annotatedProperty owl:equivalentClass ;
    owl:annotatedTarget [ rdf:type owl:Restriction ;
                          owl:onProperty :isVerifierOf ;
-                         owl:someValuesFrom :Claim
+                         owl:someValuesFrom <http://purl.org/aiaontology#Claim(n)>
                        ] ;
    rdfs:comment "FIX: more complex and complete Controls for Agents to fulfill certain Roles to be added"@en
  ] .
@@ -1215,7 +1272,8 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
 ###  http://purl.org/aiaontology#Verify
 :Verify rdf:type owl:Class ;
-        rdfs:subClassOf :Activity .
+        rdfs:subClassOf :Activity ;
+        rdfs:comment "The activity of confirming or demonstrating that something is true, accurate, or justified."@en .
 
 
 ###  http://purl.org/aiaontology#Volume
@@ -1226,7 +1284,16 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 ###  http://purl.org/aiaontology#Audit(v)
 <http://purl.org/aiaontology#Audit(v)> rdf:type owl:Class ;
                                        rdfs:subClassOf :Verify ;
-                                       rdfs:comment "(PROPOSED) The activity of making sure or demonstrating that something is true, accurate, or justified."@en .
+                                       rdfs:comment "The activity of performing a systematic, independent, objective and documented evaluation of a claim and its supporting evidence to determine the extent to which it complies with specific criteria. [control]"@en .
+
+
+###  http://purl.org/aiaontology#Claim(n)
+<http://purl.org/aiaontology#Claim(n)> rdf:type owl:Class ;
+                                       rdfs:comment "A claim is a statement about a (some specific) thing."@en ;
+                                       rdfs:label "A Claim may comprise other Claim/s, e.g. a report (a Claim) consists of many Claims. Use the 'comprises' property to indicate this."@en ,
+                                                  "Claim (noun)"@en ;
+                                       rdfs:seeAlso <https://www.w3.org/2003/glossary/keyword/All/assertion.html?keywords=assertion> ;
+                                       skos:altLabel "Assertion"@en .
 
 
 ###  http://purl.org/aiaontology#Claim(v)
@@ -1258,7 +1325,8 @@ owl:Thing rdf:type owl:Class ;
           owl:equivalentClass prov:Entity ;
           rdfs:comment """\"Anything perceivable or conceivable.\" (\"object\" - ISO 9000:2015(E))
 
-\"An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.\" (https://www.w3.org/ns/prov#Entity)"""@en ;
+\"An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.\" (https://www.w3.org/ns/prov#Entity)"""@en ,
+                       "Note: an organisation, for example, is also an agent - an agent consisting of multiple other agents."@en ;
           skos:altLabel "Entity"@en ,
                         "Item"@en ,
                         "Object"@en .
@@ -1291,19 +1359,26 @@ prov:InstantaneousEvent rdf:type owl:Class .
 
 
 ###  http://www.w3.org/ns/prov#Role
-prov:Role rdf:type owl:Class .
+prov:Role rdf:type owl:Class ;
+          rdfs:comment "\"A role is the function of an entity or agent with respect to an activity, in the context of a usage, generation, invalidation, association, start, and end.\" (https://www.w3.org/ns/prov#Role)"@en ;
+          rdfs:isDefinedBy <https://www.w3.org/ns/prov#Role> .
 
 
 ###  http://www.wikidata.org/wiki/Q154954
-<http://www.wikidata.org/wiki/Q154954> rdf:type owl:Class .
+<http://www.wikidata.org/wiki/Q154954> rdf:type owl:Class ;
+                                       rdfs:comment "\"real human being as opposed to a non-human legal person\" (https://www.wikidata.org/wiki/Q154954)"@en ;
+                                       rdfs:isDefinedBy <https://www.wikidata.org/wiki/Q154954> .
 
 
 ###  http://www.wikidata.org/wiki/Q215627
-<http://www.wikidata.org/wiki/Q215627> rdf:type owl:Class .
+<http://www.wikidata.org/wiki/Q215627> rdf:type owl:Class ;
+                                       rdfs:comment "Wikidata: Person"@en .
 
 
 ###  http://www.wikidata.org/wiki/Q3778211
-<http://www.wikidata.org/wiki/Q3778211> rdf:type owl:Class .
+<http://www.wikidata.org/wiki/Q3778211> rdf:type owl:Class ;
+                                        rdfs:comment "\"any human or non-human entity that is recognized as having privileges and obligations; a legal fiction which is used to abstract away the differences between natural persons, juridical persons and other entities such as countries\" (https://www.wikidata.org/wiki/Q3778211)"@en ;
+                                        rdfs:isDefinedBy <https://www.wikidata.org/wiki/Q3778211> .
 
 
 #################################################################
@@ -1318,29 +1393,6 @@ prov:Role rdf:type owl:Class .
 #################################################################
 #    General axioms
 #################################################################
-
-[ rdf:type owl:Axiom ;
-  owl:annotatedSource [ owl:intersectionOf ( :Claim
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty :regardsVeracity ;
-                                               owl:someValuesFrom :Claim
-                                             ]
-                                           ) ;
-                        rdf:type owl:Class ;
-                        owl:equivalentClass [ rdf:type owl:Restriction ;
-                                              owl:onProperty :verifies ;
-                                              owl:someValuesFrom :Claim
-                                            ]
-                      ] ;
-  owl:annotatedProperty owl:equivalentClass ;
-  owl:annotatedTarget [ rdf:type owl:Restriction ;
-                        owl:onProperty :verifies ;
-                        owl:someValuesFrom :Claim
-                      ] ;
-  rdfs:comment """(Auditor makesClaim Claim1) ^ (Claim1 regardsVeracity Claim2) iff (Auditor verifies Claim2);
-i.e. if the statements on the left/right are true, those on the right/left are as well."""@en
-] .
-
 
 [ rdf:type owl:Axiom ;
   owl:annotatedSource [ rdf:type owl:Restriction ;
