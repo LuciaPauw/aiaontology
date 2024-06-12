@@ -68,6 +68,12 @@ xsd:date rdf:type rdfs:Datatype ;
 #    Object Properties
 #################################################################
 
+###  http://purl.org/aiaontology#calculateHasResult
+:calculateHasResult rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Calculate ;
+                    rdfs:range :Calculation .
+
+
 ###  http://purl.org/aiaontology#calibratedBy
 :calibratedBy rdf:type owl:ObjectProperty ;
               owl:inverseOf :calibrates ;
@@ -84,7 +90,7 @@ xsd:date rdf:type rdfs:Datatype ;
 ###  http://purl.org/aiaontology#compliesWithRequirements
 :compliesWithRequirements rdf:type owl:ObjectProperty ;
                           rdfs:domain :Auditor ;
-                          rdfs:range :Control .
+                          rdfs:range <http://purl.org/aiaontology#Control(n)> .
 
 
 ###  http://purl.org/aiaontology#comprises
@@ -136,8 +142,7 @@ xsd:date rdf:type rdfs:Datatype ;
 
 ###  http://purl.org/aiaontology#hasActivityClass
 :hasActivityClass rdf:type owl:ObjectProperty ;
-                  rdfs:domain :Activity ;
-                  rdfs:range :ActivityClass .
+                  rdfs:domain :Activity .
 
 
 ###  http://purl.org/aiaontology#hasCRS
@@ -160,14 +165,14 @@ xsd:date rdf:type rdfs:Datatype ;
 
 ###  http://purl.org/aiaontology#hasCondition
 :hasCondition rdf:type owl:ObjectProperty ;
-              rdfs:domain :Control ;
+              rdfs:domain <http://purl.org/aiaontology#Control(n)> ;
               rdfs:range :State ;
               rdfs:comment "Indicates the State that must exist for the specific Control to be applicable."@en .
 
 
 ###  http://purl.org/aiaontology#hasControl
 :hasControl rdf:type owl:ObjectProperty ;
-            rdfs:range :Control .
+            rdfs:range <http://purl.org/aiaontology#Control(n)> .
 
 
 ###  http://purl.org/aiaontology#hasDuration
@@ -215,7 +220,7 @@ xsd:date rdf:type rdfs:Datatype ;
 ###  http://purl.org/aiaontology#hasMethodology
 :hasMethodology rdf:type owl:ObjectProperty ;
                 rdfs:domain :ImpactClaim ;
-                rdfs:range :Control .
+                rdfs:range <http://purl.org/aiaontology#Control(n)> .
 
 
 ###  http://purl.org/aiaontology#hasOutput
@@ -270,7 +275,7 @@ xsd:date rdf:type rdfs:Datatype ;
 
 ###  http://purl.org/aiaontology#hasSubject
 :hasSubject rdf:type owl:ObjectProperty ;
-            rdfs:domain :Control .
+            rdfs:domain <http://purl.org/aiaontology#Control(n)> .
 
 
 ###  http://purl.org/aiaontology#hasSymbol
@@ -329,7 +334,7 @@ xsd:date rdf:type rdfs:Datatype ;
 :isLimitedOrDirectedBy rdf:type owl:ObjectProperty ;
                        owl:inverseOf :limitsOrDirects ;
                        rdfs:domain owl:Thing ;
-                       rdfs:range :Control .
+                       rdfs:range <http://purl.org/aiaontology#Control(n)> .
 
 
 ###  http://purl.org/aiaontology#isOperatedBy
@@ -387,7 +392,7 @@ xsd:date rdf:type rdfs:Datatype ;
 ###  http://purl.org/aiaontology#limitsOrDirects
 :limitsOrDirects rdf:type owl:ObjectProperty ,
                           owl:AsymmetricProperty ;
-                 rdfs:domain :Control ;
+                 rdfs:domain <http://purl.org/aiaontology#Control(n)> ;
                  rdfs:range owl:Thing .
 
 
@@ -482,14 +487,12 @@ xsd:date rdf:type rdfs:Datatype ;
 
 ###  http://purl.org/aiaontology#hasActivityCode
 :hasActivityCode rdf:type owl:DatatypeProperty ;
-                 rdfs:domain :ActivityClass ;
                  rdfs:range xsd:string .
 
 
 ###  http://purl.org/aiaontology#hasCodeInRegistry
 :hasCodeInRegistry rdf:type owl:DatatypeProperty ;
-                   rdfs:domain :ActivityClass ,
-                               :Parameter ;
+                   rdfs:domain :Parameter ;
                    rdfs:range xsd:string .
 
 
@@ -539,7 +542,7 @@ xsd:date rdf:type rdfs:Datatype ;
 
 ###  http://purl.org/aiaontology#hasLogicalOperator
 :hasLogicalOperator rdf:type owl:DatatypeProperty ;
-                    rdfs:domain :Control ;
+                    rdfs:domain <http://purl.org/aiaontology#Control(n)> ;
                     rdfs:range xsd:string ;
                     rdfs:comment """Less than, greater than, equal to, include, exclude, etc.
 Used to relate the subject and value of a Control, for example:
@@ -598,8 +601,7 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
 ###  http://purl.org/aiaontology#hasRegistry
 :hasRegistry rdf:type owl:DatatypeProperty ;
-             rdfs:domain :ActivityClass ,
-                         :Instrument ,
+             rdfs:domain :Instrument ,
                          :Parameter ;
              rdfs:range xsd:string .
 
@@ -637,14 +639,14 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
 ###  http://purl.org/aiaontology#hasValue
 :hasValue rdf:type owl:DatatypeProperty ;
-          rdfs:domain :Control ,
-                      :State ;
+          rdfs:domain :State ,
+                      <http://purl.org/aiaontology#Control(n)> ;
           rdfs:range rdfs:Resource .
 
 
 ###  http://purl.org/aiaontology#isBinding
 :isBinding rdf:type owl:DatatypeProperty ;
-           rdfs:domain :Control ;
+           rdfs:domain <http://purl.org/aiaontology#Control(n)> ;
            rdfs:range xsd:boolean ;
            rdfs:comment "Used to indicate whether a Control is obligatory (TRUE) or non-obligatory (FALSE)"@en .
 
@@ -767,21 +769,6 @@ prov:startedAtTime rdf:type owl:DatatypeProperty ;
  ] .
 
 
-###  http://purl.org/aiaontology#ActivityClass
-:ActivityClass rdf:type owl:Class ;
-               rdfs:comment """EDIT aia could also have its own registry, hosted online as referenced, for example, as follows:
-
-Name: AIAO Value Determination Activities
-	Version = 1.0.0
-	Contents:
-	Activity    |   Code
-	CALCULATE        1
-	MEASURE	   2
-	SOURCE	   3
-	ESTIMATE	   4"""@en ,
-                            "USE: First specify the registry from which the activity code should be read (hasRegistry and hasRegistryVersion), the specify the activity code (hasCodeInRegistry). Then an Activity has an ActivityClass, with these properties specified."@en .
-
-
 ###  http://purl.org/aiaontology#Agent
 :Agent rdf:type owl:Class ;
        rdfs:comment "\"An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.\" (http://www.w3.org/ns/prov#Agent)"@en ;
@@ -798,7 +785,7 @@ Name: AIAO Value Determination Activities
 :Auditor rdf:type owl:Class ;
          owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                       owl:onProperty :compliesWithRequirements ;
-                                                      owl:someValuesFrom :Control
+                                                      owl:someValuesFrom <http://purl.org/aiaontology#Control(n)>
                                                     ]
                                                     [ rdf:type owl:Restriction ;
                                                       owl:onProperty :isVerifierOf ;
@@ -815,7 +802,7 @@ Name: AIAO Value Determination Activities
    owl:annotatedProperty owl:equivalentClass ;
    owl:annotatedTarget [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                 owl:onProperty :compliesWithRequirements ;
-                                                owl:someValuesFrom :Control
+                                                owl:someValuesFrom <http://purl.org/aiaontology#Control(n)>
                                               ]
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty :isVerifierOf ;
@@ -835,6 +822,7 @@ Name: AIAO Value Determination Activities
 
 ###  http://purl.org/aiaontology#Calculation
 :Calculation rdf:type owl:Class ;
+             rdfs:subClassOf <http://purl.org/aiaontology#Claim(n)> ;
              rdfs:label "Calculation"@en .
 
 
@@ -876,14 +864,7 @@ Name: AIAO Value Determination Activities
 
 ###  http://purl.org/aiaontology#ClassificationSystem
 :ClassificationSystem rdf:type owl:Class ;
-                      rdfs:subClassOf :Control .
-
-
-###  http://purl.org/aiaontology#Control
-:Control rdf:type owl:Class ;
-         rdfs:comment "A Control may comprise other Controls, e.g. a methodology (a Control) defines many conditions to be met (themselves Controls). Use the 'comprises' property to indicate this."@en ,
-                      "EDIT Procedures, plans, objectives/goals, processes, requirements, specifications, standards are all Controls"@en ,
-                      "NOT FINAL: A Control limits or directs a thing"@en .
+                      rdfs:subClassOf <http://purl.org/aiaontology#Control(n)> .
 
 
 ###  http://purl.org/aiaontology#CreditingPeriod
@@ -938,7 +919,7 @@ Name: AIAO Value Determination Activities
 
 ###  http://purl.org/aiaontology#Formula
 :Formula rdf:type owl:Class ;
-         rdfs:subClassOf :Control .
+         rdfs:subClassOf <http://purl.org/aiaontology#Control(n)> .
 
 
 ###  http://purl.org/aiaontology#GeocentricDatum
@@ -983,7 +964,7 @@ Name: AIAO Value Determination Activities
                                                         ]
                                                         [ rdf:type owl:Restriction ;
                                                           owl:onProperty :hasMethodology ;
-                                                          owl:someValuesFrom :Control
+                                                          owl:someValuesFrom <http://purl.org/aiaontology#Control(n)>
                                                         ]
                                                         [ rdf:type owl:Restriction ;
                                                           owl:onProperty :hasPeriod ;
@@ -1020,7 +1001,7 @@ Name: AIAO Value Determination Activities
                                               ]
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty :hasMethodology ;
-                                                owl:someValuesFrom :Control
+                                                owl:someValuesFrom <http://purl.org/aiaontology#Control(n)>
                                               ]
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty :hasPeriod ;
@@ -1091,7 +1072,7 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
 
 ###  http://purl.org/aiaontology#MeasurementSystem
 :MeasurementSystem rdf:type owl:Class ;
-                   rdfs:subClassOf :Control ;
+                   rdfs:subClassOf <http://purl.org/aiaontology#Control(n)> ;
                    rdfs:comment "NOT FINAL: A measurement system controls the expression of the state of a parameter."@en .
 
 
@@ -1281,6 +1262,11 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
         rdfs:subClassOf :Extent .
 
 
+###  http://purl.org/aiaontology#Audit(n)
+<http://purl.org/aiaontology#Audit(n)> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.org/aiaontology#Claim(n)> .
+
+
 ###  http://purl.org/aiaontology#Audit(v)
 <http://purl.org/aiaontology#Audit(v)> rdf:type owl:Class ;
                                        rdfs:subClassOf :Verify ;
@@ -1302,6 +1288,13 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
                                        rdfs:comment "The activity of making a statement about a (specific) thing."@en ;
                                        rdfs:label "Claim (verb)"@en ;
                                        skos:altLabel "Assert"@en .
+
+
+###  http://purl.org/aiaontology#Control(n)
+<http://purl.org/aiaontology#Control(n)> rdf:type owl:Class ;
+                                         rdfs:comment "A Control may comprise other Controls, e.g. a methodology (a Control) defines many conditions to be met (themselves Controls). Use the 'comprises' property to indicate this."@en ,
+                                                      "EDIT Procedures, plans, objectives/goals, processes, requirements, specifications, standards are all Controls"@en ,
+                                                      "NOT FINAL: A Control limits or directs a thing"@en .
 
 
 ###  http://purl.org/dc/dcmitype/Event
