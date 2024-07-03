@@ -81,6 +81,12 @@
     
 
 
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
     <!-- http://www.w3.org/2004/02/skos/core#narrower -->
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#narrower"/>
@@ -1557,15 +1563,6 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
     
 
 
-    <!-- http://purl.org/aiaontology#Measure -->
-
-    <owl:Class rdf:about="http://purl.org/aiaontology#Measure">
-        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Activity"/>
-        <rdfs:comment xml:lang="en">The activity of ascertaining the value of a parameter defining a state.</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://purl.org/aiaontology#MeasurementInstrument -->
 
     <owl:Class rdf:about="http://purl.org/aiaontology#MeasurementInstrument">
@@ -1579,14 +1576,6 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
     <owl:Class rdf:about="http://purl.org/aiaontology#MeasurementSystem">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Control(n)"/>
         <rdfs:comment xml:lang="en">NOT FINAL: A measurement system controls the expression of the state of a parameter.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/aiaontology#Move -->
-
-    <owl:Class rdf:about="http://purl.org/aiaontology#Move">
-        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Activity"/>
     </owl:Class>
     
 
@@ -1694,14 +1683,6 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     
 
 
-    <!-- http://purl.org/aiaontology#Produce -->
-
-    <owl:Class rdf:about="http://purl.org/aiaontology#Produce">
-        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Activity"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.org/aiaontology#ProjectPeriod -->
 
     <owl:Class rdf:about="http://purl.org/aiaontology#ProjectPeriod">
@@ -1800,6 +1781,15 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     
 
 
+    <!-- http://purl.org/aiaontology#Validate -->
+
+    <owl:Class rdf:about="http://purl.org/aiaontology#Validate">
+        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Activity"/>
+        <rdfs:label>Validate</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/aiaontology#Variable -->
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Variable"/>
@@ -1832,15 +1822,6 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     
 
 
-    <!-- http://purl.org/aiaontology#Verify -->
-
-    <owl:Class rdf:about="http://purl.org/aiaontology#Verify">
-        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Activity"/>
-        <rdfs:comment xml:lang="en">The activity of confirming or demonstrating that something is true, accurate, or justified.</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://purl.org/aiaontology#Volume -->
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Volume">
@@ -1860,8 +1841,7 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     <!-- http://purl.org/aiaontology#Audit(v) -->
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Audit(v)">
-        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Verify"/>
-        <rdfs:comment xml:lang="en">The activity of performing a systematic, independent, objective and documented evaluation of a claim and its supporting evidence to determine the extent to which it complies with specific criteria. [control]</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Verify%28v%29"/>
     </owl:Class>
     
 
@@ -1882,9 +1862,10 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Claim(v)">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Activity"/>
-        <rdfs:comment xml:lang="en">The activity of making a statement about a (specific) thing.</rdfs:comment>
-        <rdfs:label xml:lang="en">Claim (verb)</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Report%28v%29"/>
+        <rdfs:label xml:lang="en">Claim (v)</rdfs:label>
         <skos:altLabel xml:lang="en">Assert</skos:altLabel>
+        <skos:definition xml:lang="en">The activity of making a statement about a (specific) thing.</skos:definition>
     </owl:Class>
     
 
@@ -1895,6 +1876,35 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
         <rdfs:comment xml:lang="en">A Control may comprise other Controls, e.g. a methodology (a Control) defines many conditions to be met (themselves Controls). Use the &apos;comprises&apos; property to indicate this.</rdfs:comment>
         <rdfs:comment xml:lang="en">EDIT Procedures, plans, objectives/goals, processes, requirements, specifications, standards are all Controls</rdfs:comment>
         <rdfs:comment xml:lang="en">NOT FINAL: A Control limits or directs a thing</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/aiaontology#Measure%28v%29 -->
+
+    <owl:Class rdf:about="http://purl.org/aiaontology#Measure%28v%29">
+        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Activity"/>
+        <rdfs:label>Measure(v)</rdfs:label>
+        <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The activity of ascertaining the value of a parameter defining a state.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/aiaontology#Report%28v%29 -->
+
+    <owl:Class rdf:about="http://purl.org/aiaontology#Report%28v%29">
+        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Claim(v)"/>
+        <rdfs:label>Report(v)</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/aiaontology#Verify%28v%29 -->
+
+    <owl:Class rdf:about="http://purl.org/aiaontology#Verify%28v%29">
+        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Activity"/>
+        <rdfs:label>Verify(v)</rdfs:label>
+        <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The activity of confirming or demonstrating that something is true, accurate, or justified.</skos:definition>
     </owl:Class>
     
 
