@@ -714,6 +714,12 @@
     
 
 
+    <!-- http://www.w3.org/2002/07/owl#equivalentClass -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -1754,13 +1760,27 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <!-- http://purl.org/dc/dcmitype/Event -->
 
-    <owl:Class rdf:about="http://purl.org/dc/dcmitype/Event"/>
+    <owl:Class rdf:about="http://purl.org/dc/dcmitype/Event">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Event"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
     <!-- http://purl.org/dc/terms/AgentClass -->
 
-    <owl:Class rdf:about="http://purl.org/dc/terms/AgentClass"/>
+    <owl:Class rdf:about="http://purl.org/dc/terms/AgentClass">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Agent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
@@ -1801,13 +1821,27 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <!-- http://www.w3.org/ns/prov#Activity -->
 
-    <owl:Class rdf:about="http://www.w3.org/ns/prov#Activity"/>
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Activity">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Activity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
     <!-- http://www.w3.org/ns/prov#Agent -->
 
-    <owl:Class rdf:about="http://www.w3.org/ns/prov#Agent"/>
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Agent">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Agent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
@@ -1819,7 +1853,14 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <!-- http://www.w3.org/ns/prov#InstantaneousEvent -->
 
-    <owl:Class rdf:about="http://www.w3.org/ns/prov#InstantaneousEvent"/>
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#InstantaneousEvent">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Event"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
@@ -1828,14 +1869,7 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     <owl:Class rdf:about="http://www.wikidata.org/wiki/Q154954">
         <rdfs:comment xml:lang="en">&quot;real human being as opposed to a non-human legal person&quot; (https://www.wikidata.org/wiki/Q154954)</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://www.wikidata.org/wiki/Q154954"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.wikidata.org/wiki/Q215627 -->
-
-    <owl:Class rdf:about="http://www.wikidata.org/wiki/Q215627">
-        <rdfs:comment xml:lang="en">Wikidata: Person</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Natural Person</rdfs:label>
     </owl:Class>
     
 
@@ -1845,6 +1879,7 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     <owl:Class rdf:about="http://www.wikidata.org/wiki/Q3778211">
         <rdfs:comment xml:lang="en">&quot;any human or non-human entity that is recognized as having privileges and obligations; a legal fiction which is used to abstract away the differences between natural persons, juridical persons and other entities such as countries&quot; (https://www.wikidata.org/wiki/Q3778211)</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://www.wikidata.org/wiki/Q3778211"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Legal Person</rdfs:label>
     </owl:Class>
     
 
@@ -1865,6 +1900,20 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     <owl:NamedIndividual rdf:about="http://purl.org/aiaontology#GPS">
         <rdfs:comment xml:lang="en">This is but one example of a CRS (Coordinate Reference System) - there are many more that may be defined in implementation</rdfs:comment>
     </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#equivalentClass">
+        <rdfs:label>equivalentClass</rdfs:label>
+    </rdf:Description>
     
 
 
