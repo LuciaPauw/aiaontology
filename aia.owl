@@ -1165,6 +1165,17 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Area">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Extent"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/aiaontology#Attest -->
+
+    <owl:Class rdf:about="http://purl.org/aiaontology#Attest">
+        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Activity"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO definition</rdfs:comment>
+        <rdfs:label>Attest</rdfs:label>
     </owl:Class>
     
 
@@ -1243,6 +1254,16 @@ is equivalent to the condition (Control) that Activity B only commence after the
     
 
 
+    <!-- http://purl.org/aiaontology#ClaimMedium -->
+
+    <owl:Class rdf:about="http://purl.org/aiaontology#ClaimMedium">
+        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Medium"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
+        <rdfs:label>Claim Medium</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/aiaontology#Claimant -->
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Claimant">
@@ -1273,7 +1294,7 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Class">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Parameter"/>
-        <rdfs:comment xml:lang="en">FIX: add definition</rdfs:comment>
+        <rdfs:comment xml:lang="en">TODO: definition</rdfs:comment>
     </owl:Class>
     
 
@@ -1282,6 +1303,8 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
     <owl:Class rdf:about="http://purl.org/aiaontology#ClassificationSystem">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Control(n)"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Classification System</rdfs:label>
     </owl:Class>
     
 
@@ -1328,6 +1351,7 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Extent">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#SpatialParameter"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
     </owl:Class>
     
 
@@ -1336,6 +1360,7 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Formula">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Control(n)"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
     </owl:Class>
     
 
@@ -1344,6 +1369,7 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
     <owl:Class rdf:about="http://purl.org/aiaontology#GeocentricDatum">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#SpatialReferenceSystem"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO:definition</rdfs:comment>
     </owl:Class>
     
 
@@ -1352,6 +1378,7 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
     <owl:Class rdf:about="http://purl.org/aiaontology#GeodeticDatum">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#SpatialReferenceSystem"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
     </owl:Class>
     
 
@@ -1397,6 +1424,7 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Line">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Extent"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
     </owl:Class>
     
 
@@ -1407,8 +1435,18 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
         <owl:equivalentClass rdf:resource="http://purl.org/dc/terms/Location"/>
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#SpatialParameter"/>
         <rdfs:comment xml:lang="en">An entity of type Location can be a Point, Line, Path, Polygon, or Volume. A point has a x and y (and optional z) coordinate. If no z coordinate is specified, sea level is assumed. A line comprises exactly two points. A path is two or more continuous lines. A polygon is the area enclosed by three or more points. A volume is the area enclosed by four or more polygons where each edge is shared by exactly two polygons. Length can be derived from a given Line, area from a given Polygon, and volume from a given Volume.</rdfs:comment>
-        <rdfs:comment xml:lang="en">EDIT</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
         <rdfs:label xml:lang="en">Location</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/aiaontology#Measurement -->
+
+    <owl:Class rdf:about="http://purl.org/aiaontology#Measurement">
+        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Claim(n)"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
+        <rdfs:label>Measurement</rdfs:label>
     </owl:Class>
     
 
@@ -1426,6 +1464,15 @@ Differs from Input; Input is consumed during the Activity, while an Instrument i
     <owl:Class rdf:about="http://purl.org/aiaontology#MeasurementSystem">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Control(n)"/>
         <rdfs:comment xml:lang="en">NOT FINAL: A measurement system controls the expression of the state of a parameter.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/aiaontology#Medium -->
+
+    <owl:Class rdf:about="http://purl.org/aiaontology#Medium">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
+        <rdfs:label>Medium</rdfs:label>
     </owl:Class>
     
 
@@ -1542,8 +1589,8 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Reputation">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Parameter"/>
-        <rdfs:comment xml:lang="en">FIX: Define a Credentials Class</rdfs:comment>
         <rdfs:comment xml:lang="en">NOT FINAL &quot;[T]he beliefs or opinions that are generally held about someone or something.&quot; (OED, Google)</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
         <rdfs:label xml:lang="en">Reputation</rdfs:label>
     </owl:Class>
     
@@ -1564,6 +1611,7 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <owl:Class rdf:about="http://purl.org/aiaontology#SpatialParameter">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Parameter"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
     </owl:Class>
     
 
@@ -1572,6 +1620,7 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <owl:Class rdf:about="http://purl.org/aiaontology#SpatialReferenceSystem">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#MeasurementSystem"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
     </owl:Class>
     
 
@@ -1598,6 +1647,7 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <owl:Class rdf:about="http://purl.org/aiaontology#TemporalReferenceSystem">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#MeasurementSystem"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
     </owl:Class>
     
 
@@ -1650,6 +1700,16 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Volume">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Extent"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/aiaontology#Attestation%28n%29 -->
+
+    <owl:Class rdf:about="http://purl.org/aiaontology#Attestation%28n%29">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
+        <rdfs:label>Attestation(n)</rdfs:label>
     </owl:Class>
     
 
@@ -1707,6 +1767,7 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <owl:Class rdf:about="http://purl.org/aiaontology#IdentityClaim%28n%29">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Claim(n)"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
         <rdfs:label>Identity claim (n)</rdfs:label>
     </owl:Class>
     
@@ -1786,7 +1847,14 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <!-- http://purl.org/dc/terms/Location -->
 
-    <owl:Class rdf:about="http://purl.org/dc/terms/Location"/>
+    <owl:Class rdf:about="http://purl.org/dc/terms/Location">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Location"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
