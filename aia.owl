@@ -1133,7 +1133,7 @@ is equivalent to the condition (Control) that Activity B only commence after the
         <owl:disjointWith rdf:resource="http://purl.org/aiaontology#Event"/>
         <rdfs:comment xml:lang="en">A thing that an agent does, which impacts an environment.</rdfs:comment>
         <rdfs:comment xml:lang="en">An Activity may comprise other Activity/ies, e.g. a project (an Activity) consists of many Activities. Use the &apos;comprises&apos; property to indicate this.</rdfs:comment>
-        <owl:equivalentClass xml:lang="en">FIX: does an Activity, like an ImpactClaim, need to have a value for every predicate for which it is in the domain (see protobufs)</owl:equivalentClass>
+        <owl:equivalentClass xml:lang="en">TODO: does an Activity, like an ImpactClaim, need to have a value for every predicate for which it is in the domain (see protobufs)</owl:equivalentClass>
         <skos:altLabel xml:lang="en">Action</skos:altLabel>
     </owl:Class>
     <owl:Axiom>
@@ -1872,8 +1872,8 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     <!-- http://purl.org/aiaontology#Claim(n) -->
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Claim(n)">
+        <rdfs:comment xml:lang="en">A Claim may comprise other Claim/s, e.g. a report (a Claim) consists of many Claims. Use the &apos;comprises&apos; property to indicate this.</rdfs:comment>
         <rdfs:comment xml:lang="en">A claim is a statement about a (some specific) thing.</rdfs:comment>
-        <rdfs:label xml:lang="en">A Claim may comprise other Claim/s, e.g. a report (a Claim) consists of many Claims. Use the &apos;comprises&apos; property to indicate this.</rdfs:label>
         <rdfs:label xml:lang="en">Claim (noun)</rdfs:label>
         <rdfs:seeAlso rdf:resource="https://www.w3.org/2003/glossary/keyword/All/assertion.html?keywords=assertion"/>
         <skos:altLabel xml:lang="en">Assertion</skos:altLabel>
