@@ -1181,6 +1181,16 @@ is equivalent to the condition (Control) that Activity B only commence after the
     
 
 
+    <!-- http://purl.org/aiaontology#Attestation -->
+
+    <owl:Class rdf:about="http://purl.org/aiaontology#Attestation">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A claim that is validated by formal statement of an official authority</rdfs:comment>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
+        <rdfs:label>Attestation(n)</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/aiaontology#Auditor -->
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Auditor">
@@ -1495,7 +1505,7 @@ Media can be digital or physical</rdfs:comment>
     <!-- http://purl.org/aiaontology#NaturalProcess -->
 
     <owl:Class rdf:about="http://purl.org/aiaontology#NaturalProcess">
-        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Process%28n%29"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Process"/>
         <rdfs:label>Natural Process</rdfs:label>
         <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A series of interrelated or interacting natural events without a primary human cause.</skos:definition>
     </owl:Class>
@@ -1589,10 +1599,19 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     
 
 
+    <!-- http://purl.org/aiaontology#Process -->
+
+    <owl:Class rdf:about="http://purl.org/aiaontology#Process">
+        <rdfs:label>Process (n)</rdfs:label>
+        <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A series of interrelated or interacting events or activities.</skos:definition>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/aiaontology#Project -->
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Project">
-        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Process%28n%29"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Process"/>
         <rdfs:label>Project</rdfs:label>
         <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A unique process, consisting of a set of coordinated activities, undertaken to achieve an objective under specific controls.</skos:definition>
     </owl:Class>
@@ -1738,16 +1757,6 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     
 
 
-    <!-- http://purl.org/aiaontology#Attestation%28n%29 -->
-
-    <owl:Class rdf:about="http://purl.org/aiaontology#Attestation%28n%29">
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A claim that is validated by formal statement of an official authority</rdfs:comment>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
-        <rdfs:label>Attestation(n)</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.org/aiaontology#Audit(n) -->
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Audit(n)">
@@ -1761,7 +1770,7 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     <!-- http://purl.org/aiaontology#Audit(v) -->
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Audit(v)">
-        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Verify%28v%29"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Verify(v)"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Audit (v)</rdfs:label>
         <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The activity of performing a systematic, independent, objective and documented evaluation of a claim and its supporting evidence to determine the extent to which it complies with specific criteria (thing:control)</skos:definition>
     </owl:Class>
@@ -1772,12 +1781,7 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Claim(n)">
         <rdfs:comment xml:lang="en">A Claim may comprise other Claim/s, e.g. a report (a Claim) consists of many Claims. Use the &apos;comprises&apos; property to indicate this.</rdfs:comment>
-<<<<<<< HEAD
-        <rdfs:comment xml:lang="en">A claim is a statement about a (some specific) thing.</rdfs:comment>
-        <rdfs:label xml:lang="en">Claim (noun)</rdfs:label>
-=======
         <rdfs:label xml:lang="en">Claim (n)</rdfs:label>
->>>>>>> 9df191ddee84548f98a447ecc12f6665c967e8cb
         <rdfs:seeAlso rdf:resource="https://www.w3.org/2003/glossary/keyword/All/assertion.html?keywords=assertion"/>
         <skos:altLabel xml:lang="en">Assertion</skos:altLabel>
         <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A claim is a statement about a (some specific) thing expressed in a claim medium.</skos:definition>
@@ -1805,9 +1809,9 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     
 
 
-    <!-- http://purl.org/aiaontology#IdentityClaim%28n%29 -->
+    <!-- http://purl.org/aiaontology#IdentityClaim(n) -->
 
-    <owl:Class rdf:about="http://purl.org/aiaontology#IdentityClaim%28n%29">
+    <owl:Class rdf:about="http://purl.org/aiaontology#IdentityClaim(n)">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Claim(n)"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TODO: definition</rdfs:comment>
         <rdfs:label>Identity claim (n)</rdfs:label>
@@ -1815,9 +1819,9 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     
 
 
-    <!-- http://purl.org/aiaontology#ImpactClaim%28n%29 -->
+    <!-- http://purl.org/aiaontology#ImpactClaim(n) -->
 
-    <owl:Class rdf:about="http://purl.org/aiaontology#ImpactClaim%28n%29">
+    <owl:Class rdf:about="http://purl.org/aiaontology#ImpactClaim(n)">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Claim(n)"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Impact Claim (n)</rdfs:label>
         <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An impact claim is a statement about the relation between an activity and a state change, typically following an impact accounting methodology (thing:control).</skos:definition>
@@ -1825,9 +1829,9 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     
 
 
-    <!-- http://purl.org/aiaontology#Measure%28v%29 -->
+    <!-- http://purl.org/aiaontology#Measure(v) -->
 
-    <owl:Class rdf:about="http://purl.org/aiaontology#Measure%28v%29">
+    <owl:Class rdf:about="http://purl.org/aiaontology#Measure(v)">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Activity"/>
         <rdfs:label>Measure(v)</rdfs:label>
         <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The activity of ascertaining the value of a parameter defining a state.</skos:definition>
@@ -1835,18 +1839,9 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     
 
 
-    <!-- http://purl.org/aiaontology#Process%28n%29 -->
+    <!-- http://purl.org/aiaontology#Report(n) -->
 
-    <owl:Class rdf:about="http://purl.org/aiaontology#Process%28n%29">
-        <rdfs:label>Process (n)</rdfs:label>
-        <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A series of interrelated or interacting events or activities.</skos:definition>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/aiaontology#Report%28n%29 -->
-
-    <owl:Class rdf:about="http://purl.org/aiaontology#Report%28n%29">
+    <owl:Class rdf:about="http://purl.org/aiaontology#Report(n)">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Claim(n)"/>
         <rdfs:label>Report (n)</rdfs:label>
         <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A report is a claim that satisfies a specification about an activity or event.</skos:definition>
@@ -1854,9 +1849,9 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     
 
 
-    <!-- http://purl.org/aiaontology#Report%28v%29 -->
+    <!-- http://purl.org/aiaontology#Report(v) -->
 
-    <owl:Class rdf:about="http://purl.org/aiaontology#Report%28v%29">
+    <owl:Class rdf:about="http://purl.org/aiaontology#Report(v)">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Claim(v)"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Report (v)</rdfs:label>
         <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The activity of making a claim about an activity or event according to a specification.</skos:definition>
@@ -1864,9 +1859,9 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
     
 
 
-    <!-- http://purl.org/aiaontology#Verify%28v%29 -->
+    <!-- http://purl.org/aiaontology#Verify(v) -->
 
-    <owl:Class rdf:about="http://purl.org/aiaontology#Verify%28v%29">
+    <owl:Class rdf:about="http://purl.org/aiaontology#Verify(v)">
         <rdfs:subClassOf rdf:resource="http://purl.org/aiaontology#Activity"/>
         <rdfs:label>Verify(v)</rdfs:label>
         <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The activity of confirming or demonstrating that something is true, accurate, or justified.</skos:definition>
@@ -1926,7 +1921,6 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
         <rdfs:comment xml:lang="en">&quot;Anything perceivable or conceivable.&quot; (&quot;object&quot; - ISO 9000:2015(E))
 
 &quot;An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.&quot; (https://www.w3.org/ns/prov#Entity)</rdfs:comment>
-        <rdfs:comment xml:lang="en">Note: an organisation, for example, is also an agent - an agent consisting of multiple other agents.</rdfs:comment>
         <skos:altLabel xml:lang="en">Entity</skos:altLabel>
         <skos:altLabel xml:lang="en">Item</skos:altLabel>
         <skos:altLabel xml:lang="en">Object</skos:altLabel>
@@ -2090,5 +2084,5 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
 
 
-<!-- Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
 

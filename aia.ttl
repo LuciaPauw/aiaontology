@@ -792,6 +792,13 @@ is equivalent to the condition (Control) that Activity B only commence after the
         rdfs:label "Attest" .
 
 
+###  http://purl.org/aiaontology#Attestation
+:Attestation rdf:type owl:Class ;
+             rdfs:comment "A claim that is validated by formal statement of an official authority"^^xsd:string ,
+                          "TODO: definition"^^xsd:string ;
+             rdfs:label "Attestation(n)" .
+
+
 ###  http://purl.org/aiaontology#Auditor
 :Auditor rdf:type owl:Class ;
          owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
@@ -1014,7 +1021,7 @@ Media can be digital or physical"""^^xsd:string ,
 
 ###  http://purl.org/aiaontology#NaturalProcess
 :NaturalProcess rdf:type owl:Class ;
-                rdfs:subClassOf <http://purl.org/aiaontology#Process%28n%29> ;
+                rdfs:subClassOf :Process ;
                 rdfs:label "Natural Process" ;
                 <http://www.w3.org/2004/02/skos/core#definition> "A series of interrelated or interacting natural events without a primary human cause."^^xsd:string .
 
@@ -1085,9 +1092,15 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
         rdfs:label "Period"@en .
 
 
+###  http://purl.org/aiaontology#Process
+:Process rdf:type owl:Class ;
+         rdfs:label "Process (n)" ;
+         <http://www.w3.org/2004/02/skos/core#definition> "A series of interrelated or interacting events or activities."^^xsd:string .
+
+
 ###  http://purl.org/aiaontology#Project
 :Project rdf:type owl:Class ;
-         rdfs:subClassOf <http://purl.org/aiaontology#Process%28n%29> ;
+         rdfs:subClassOf :Process ;
          rdfs:label "Project" ;
          <http://www.w3.org/2004/02/skos/core#definition> "A unique process, consisting of a set of coordinated activities, undertaken to achieve an objective under specific controls."^^xsd:string .
 
@@ -1189,13 +1202,6 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
         rdfs:comment "TODO: definition"^^xsd:string .
 
 
-###  http://purl.org/aiaontology#Attestation%28n%29
-<http://purl.org/aiaontology#Attestation%28n%29> rdf:type owl:Class ;
-                                                 rdfs:comment "A claim that is validated by formal statement of an official authority"^^xsd:string ,
-                                                              "TODO: definition"^^xsd:string ;
-                                                 rdfs:label "Attestation(n)" .
-
-
 ###  http://purl.org/aiaontology#Audit(n)
 <http://purl.org/aiaontology#Audit(n)> rdf:type owl:Class ;
                                        rdfs:subClassOf <http://purl.org/aiaontology#Claim(n)> ;
@@ -1205,7 +1211,7 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
 ###  http://purl.org/aiaontology#Audit(v)
 <http://purl.org/aiaontology#Audit(v)> rdf:type owl:Class ;
-                                       rdfs:subClassOf <http://purl.org/aiaontology#Verify%28v%29> ;
+                                       rdfs:subClassOf <http://purl.org/aiaontology#Verify(v)> ;
                                        rdfs:label "Audit (v)"^^xsd:string ;
                                        <http://www.w3.org/2004/02/skos/core#definition> "The activity of performing a systematic, independent, objective and documented evaluation of a claim and its supporting evidence to determine the extent to which it complies with specific criteria (thing:control)"^^xsd:string .
 
@@ -1233,52 +1239,46 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
                                          <http://www.w3.org/2004/02/skos/core#definition> "A means of limiting or directing a thing."^^xsd:string .
 
 
-###  http://purl.org/aiaontology#IdentityClaim%28n%29
-<http://purl.org/aiaontology#IdentityClaim%28n%29> rdf:type owl:Class ;
-                                                   rdfs:subClassOf <http://purl.org/aiaontology#Claim(n)> ;
-                                                   rdfs:comment "TODO: definition"^^xsd:string ;
-                                                   rdfs:label "Identity claim (n)" .
+###  http://purl.org/aiaontology#IdentityClaim(n)
+<http://purl.org/aiaontology#IdentityClaim(n)> rdf:type owl:Class ;
+                                               rdfs:subClassOf <http://purl.org/aiaontology#Claim(n)> ;
+                                               rdfs:comment "TODO: definition"^^xsd:string ;
+                                               rdfs:label "Identity claim (n)" .
 
 
-###  http://purl.org/aiaontology#ImpactClaim%28n%29
-<http://purl.org/aiaontology#ImpactClaim%28n%29> rdf:type owl:Class ;
-                                                 rdfs:subClassOf <http://purl.org/aiaontology#Claim(n)> ;
-                                                 rdfs:label "Impact Claim (n)"^^xsd:string ;
-                                                 <http://www.w3.org/2004/02/skos/core#definition> "An impact claim is a statement about the relation between an activity and a state change, typically following an impact accounting methodology (thing:control)."^^xsd:string .
+###  http://purl.org/aiaontology#ImpactClaim(n)
+<http://purl.org/aiaontology#ImpactClaim(n)> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://purl.org/aiaontology#Claim(n)> ;
+                                             rdfs:label "Impact Claim (n)"^^xsd:string ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "An impact claim is a statement about the relation between an activity and a state change, typically following an impact accounting methodology (thing:control)."^^xsd:string .
 
 
-###  http://purl.org/aiaontology#Measure%28v%29
-<http://purl.org/aiaontology#Measure%28v%29> rdf:type owl:Class ;
-                                             rdfs:subClassOf :Activity ;
-                                             rdfs:label "Measure(v)" ;
-                                             <http://www.w3.org/2004/02/skos/core#definition> "The activity of ascertaining the value of a parameter defining a state."^^xsd:string .
+###  http://purl.org/aiaontology#Measure(v)
+<http://purl.org/aiaontology#Measure(v)> rdf:type owl:Class ;
+                                         rdfs:subClassOf :Activity ;
+                                         rdfs:label "Measure(v)" ;
+                                         <http://www.w3.org/2004/02/skos/core#definition> "The activity of ascertaining the value of a parameter defining a state."^^xsd:string .
 
 
-###  http://purl.org/aiaontology#Process%28n%29
-<http://purl.org/aiaontology#Process%28n%29> rdf:type owl:Class ;
-                                             rdfs:label "Process (n)" ;
-                                             <http://www.w3.org/2004/02/skos/core#definition> "A series of interrelated or interacting events or activities."^^xsd:string .
+###  http://purl.org/aiaontology#Report(n)
+<http://purl.org/aiaontology#Report(n)> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://purl.org/aiaontology#Claim(n)> ;
+                                        rdfs:label "Report (n)" ;
+                                        <http://www.w3.org/2004/02/skos/core#definition> "A report is a claim that satisfies a specification about an activity or event."^^xsd:string .
 
 
-###  http://purl.org/aiaontology#Report%28n%29
-<http://purl.org/aiaontology#Report%28n%29> rdf:type owl:Class ;
-                                            rdfs:subClassOf <http://purl.org/aiaontology#Claim(n)> ;
-                                            rdfs:label "Report (n)" ;
-                                            <http://www.w3.org/2004/02/skos/core#definition> "A report is a claim that satisfies a specification about an activity or event."^^xsd:string .
+###  http://purl.org/aiaontology#Report(v)
+<http://purl.org/aiaontology#Report(v)> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://purl.org/aiaontology#Claim(v)> ;
+                                        rdfs:label "Report (v)"^^xsd:string ;
+                                        <http://www.w3.org/2004/02/skos/core#definition> "The activity of making a claim about an activity or event according to a specification."^^xsd:string .
 
 
-###  http://purl.org/aiaontology#Report%28v%29
-<http://purl.org/aiaontology#Report%28v%29> rdf:type owl:Class ;
-                                            rdfs:subClassOf <http://purl.org/aiaontology#Claim(v)> ;
-                                            rdfs:label "Report (v)"^^xsd:string ;
-                                            <http://www.w3.org/2004/02/skos/core#definition> "The activity of making a claim about an activity or event according to a specification."^^xsd:string .
-
-
-###  http://purl.org/aiaontology#Verify%28v%29
-<http://purl.org/aiaontology#Verify%28v%29> rdf:type owl:Class ;
-                                            rdfs:subClassOf :Activity ;
-                                            rdfs:label "Verify(v)" ;
-                                            <http://www.w3.org/2004/02/skos/core#definition> "The activity of confirming or demonstrating that something is true, accurate, or justified."^^xsd:string .
+###  http://purl.org/aiaontology#Verify(v)
+<http://purl.org/aiaontology#Verify(v)> rdf:type owl:Class ;
+                                        rdfs:subClassOf :Activity ;
+                                        rdfs:label "Verify(v)" ;
+                                        <http://www.w3.org/2004/02/skos/core#definition> "The activity of confirming or demonstrating that something is true, accurate, or justified."^^xsd:string .
 
 
 ###  http://purl.org/dc/dcmitype/Event
@@ -1419,4 +1419,4 @@ owl:equivalentClass rdfs:label "equivalentClass" .
 ] .
 
 
-###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
