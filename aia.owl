@@ -232,35 +232,10 @@
     
 
 
-    <!-- http://purl.org/aiaontology#fromImpactClaim -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#fromImpactClaim">
-        <owl:inverseOf rdf:resource="http://purl.org/aiaontology#hasIPP"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://purl.org/aiaontology#hasActivity -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#hasActivity">
         <rdfs:range rdf:resource="http://purl.org/aiaontology#Activity"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/aiaontology#hasActivityClass -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#hasActivityClass">
-        <rdfs:domain rdf:resource="http://purl.org/aiaontology#Activity"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/aiaontology#hasCRS -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#hasCRS">
-        <rdfs:domain rdf:resource="http://purl.org/aiaontology#Location"/>
-        <rdfs:comment xml:lang="en">EDIT</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -329,20 +304,6 @@
     
 
 
-    <!-- http://purl.org/aiaontology#hasIPP -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#hasIPP"/>
-    
-
-
-    <!-- http://purl.org/aiaontology#hasInput -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#hasInput">
-        <rdfs:domain rdf:resource="http://purl.org/aiaontology#Activity"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://purl.org/aiaontology#hasInstrument -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#hasInstrument">
@@ -364,14 +325,6 @@
 
     <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#hasMethodology">
         <rdfs:range rdf:resource="http://purl.org/aiaontology#Control(n)"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/aiaontology#hasOutput -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#hasOutput">
-        <rdfs:domain rdf:resource="http://purl.org/aiaontology#Activity"/>
     </owl:ObjectProperty>
     
 
@@ -431,12 +384,6 @@
     
 
 
-    <!-- http://purl.org/aiaontology#hasStateDiff -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#hasStateDiff"/>
-    
-
-
     <!-- http://purl.org/aiaontology#hasSubject -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#hasSubject">
@@ -475,15 +422,6 @@
         <rdfs:domain rdf:resource="http://purl.org/aiaontology#Activity"/>
         <rdfs:domain rdf:resource="http://purl.org/aiaontology#Event"/>
         <rdfs:range rdf:resource="http://purl.org/aiaontology#Environment"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/aiaontology#impliesType -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#impliesType">
-        <rdfs:range rdf:resource="http://purl.org/aiaontology#Location"/>
-        <rdfs:comment xml:lang="en">EDIT</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -626,6 +564,7 @@
 
     <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#makesImpactClaim">
         <rdfs:domain rdf:resource="http://purl.org/aiaontology#Agent"/>
+        <rdfs:range rdf:resource="http://purl.org/aiaontology#ImpactClaim(n)"/>
     </owl:ObjectProperty>
     
 
@@ -658,26 +597,6 @@
     
 
 
-    <!-- http://purl.org/aiaontology#regardsVeracity -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#regardsVeracity">
-        <rdfs:domain rdf:resource="http://purl.org/aiaontology#Claim(n)"/>
-        <rdfs:range rdf:resource="http://purl.org/aiaontology#Claim(n)"/>
-        <rdfs:comment xml:lang="en">FIX: this does not work while Role exists/Auditor etc. is not a subClassOf Agent.</rdfs:comment>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/aiaontology#usedInActivity -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#usedInActivity">
-        <owl:inverseOf rdf:resource="http://purl.org/aiaontology#usesResource"/>
-        <rdfs:range rdf:resource="http://purl.org/aiaontology#Activity"/>
-        <rdfs:comment xml:lang="en">EDIT</rdfs:comment>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://purl.org/aiaontology#usedToPerform -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#usedToPerform">
@@ -687,29 +606,10 @@
     
 
 
-    <!-- http://purl.org/aiaontology#usesResource -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#usesResource">
-        <rdfs:domain rdf:resource="http://purl.org/aiaontology#Activity"/>
-        <rdfs:comment xml:lang="en">EDIT</rdfs:comment>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://purl.org/aiaontology#usesSymbol -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#usesSymbol">
         <rdfs:domain rdf:resource="http://purl.org/aiaontology#Formula"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/aiaontology#verifies -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/aiaontology#verifies">
-        <rdfs:domain rdf:resource="http://purl.org/aiaontology#Agent"/>
-        <rdfs:range rdf:resource="http://purl.org/aiaontology#Claim(n)"/>
-        <rdfs:comment xml:lang="en">FIX: this does not work while Role exists/Auditor etc. is not a subClassOf Agent.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -1094,66 +994,19 @@ is equivalent to the condition (Control) that Activity B only commence after the
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Activity">
         <owl:equivalentClass rdf:resource="http://www.w3.org/ns/prov#Activity"/>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.org/aiaontology#hasInput"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.org/aiaontology#hasOutput"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.org/aiaontology#isPerformedBy"/>
-                        <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Agent"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.org/aiaontology#performedWith"/>
-                        <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Instrument"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
         <owl:disjointWith rdf:resource="http://purl.org/aiaontology#Event"/>
         <rdfs:comment xml:lang="en">A thing that an agent does, which impacts an environment.</rdfs:comment>
         <rdfs:comment xml:lang="en">An Activity may comprise other Activity/ies, e.g. a project (an Activity) consists of many Activities. Use the &apos;comprises&apos; property to indicate this.</rdfs:comment>
         <skos:altLabel xml:lang="en">Action</skos:altLabel>
     </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="http://purl.org/aiaontology#Activity"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
-        <owl:annotatedTarget>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.org/aiaontology#hasInput"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.org/aiaontology#hasOutput"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.org/aiaontology#isPerformedBy"/>
-                        <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Agent"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.org/aiaontology#performedWith"/>
-                        <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Instrument"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:annotatedTarget>
-        <rdfs:comment xml:lang="en">EDIT These four axioms define an activity. A valid activity requires specification of an agent, instrument, input, and output.</rdfs:comment>
-    </owl:Axiom>
     
 
 
     <!-- http://purl.org/aiaontology#Agent -->
 
     <owl:Class rdf:about="http://purl.org/aiaontology#Agent">
+        <owl:equivalentClass rdf:resource="http://purl.org/dc/terms/AgentClass"/>
+        <owl:equivalentClass rdf:resource="http://www.w3.org/ns/prov#Agent"/>
         <rdfs:comment xml:lang="en">&quot;An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent&apos;s activity.&quot; (http://www.w3.org/ns/prov#Agent)</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov#Agent"/>
         <rdfs:label xml:lang="en">Agent</rdfs:label>
@@ -1871,40 +1724,19 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <!-- http://purl.org/dc/dcmitype/Event -->
 
-    <owl:Class rdf:about="http://purl.org/dc/dcmitype/Event">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
-                <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Event"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/dc/dcmitype/Event"/>
     
 
 
     <!-- http://purl.org/dc/terms/AgentClass -->
 
-    <owl:Class rdf:about="http://purl.org/dc/terms/AgentClass">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
-                <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Agent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/dc/terms/AgentClass"/>
     
 
 
     <!-- http://purl.org/dc/terms/Location -->
 
-    <owl:Class rdf:about="http://purl.org/dc/terms/Location">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
-                <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Location"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
+    <owl:Class rdf:about="http://purl.org/dc/terms/Location"/>
     
 
 
@@ -1938,27 +1770,13 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <!-- http://www.w3.org/ns/prov#Activity -->
 
-    <owl:Class rdf:about="http://www.w3.org/ns/prov#Activity">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
-                <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Activity"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Activity"/>
     
 
 
     <!-- http://www.w3.org/ns/prov#Agent -->
 
-    <owl:Class rdf:about="http://www.w3.org/ns/prov#Agent">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
-                <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Agent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Agent"/>
     
 
 
@@ -1970,14 +1788,7 @@ Period, in turn, is in the domain of the startedAtTime, endedAtTime, and hasDura
 
     <!-- http://www.w3.org/ns/prov#InstantaneousEvent -->
 
-    <owl:Class rdf:about="http://www.w3.org/ns/prov#InstantaneousEvent">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
-                <owl:someValuesFrom rdf:resource="http://purl.org/aiaontology#Event"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#InstantaneousEvent"/>
     
 
 
